@@ -23,6 +23,9 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
     return new NextResponse("Slug not found", { status: 400 });
   }
   const ip = req.ip;
+  if (ip === "73.13.188.130") {
+    return new NextResponse(null, { status: 202 });
+  }
   if (ip) {
     // Hash the IP in order to not store it directly in your db.
     const buf = await crypto.subtle.digest(
