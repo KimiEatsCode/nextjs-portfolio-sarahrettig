@@ -5,6 +5,7 @@ import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { ProjectTopics } from "@/app/components/project-topics";
 import { Article } from "./article";
+import { ProjectFilter } from "./project-filter";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
@@ -37,6 +38,16 @@ export default async function ProjectsPage() {
         new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
         new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
     );
+
+  const topics = Array.from(
+    new Set(
+      allProjects
+        .flatMap((project) => project.topics ?? [])
+        .map((topic) => topic.trim()),
+    ),
+  )
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
 
   return (
     <div className="relative pb-16">
@@ -105,35 +116,7 @@ export default async function ProjectsPage() {
         </div>
         <div className="hidden w-full h-px md:block bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 0)
-              .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
-                </Card>
-              ))}
-          </div>
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 1)
-              .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
-                </Card>
-              ))}
-          </div>
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 2)
-              .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
-                </Card>
-              ))}
-          </div>
-        </div>
+        <ProjectFilter projects={sorted} views={views} topics={topics} />
       </div>
     </div>
   );
