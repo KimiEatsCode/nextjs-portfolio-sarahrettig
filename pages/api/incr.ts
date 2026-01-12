@@ -24,6 +24,7 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
   }
   const ip = req.ip;
   if (ip === "73.13.188.130") {
+    console.log("id address is yours")
     return new NextResponse(null, { status: 202 });
   }
   if (ip) {

@@ -1,6 +1,7 @@
 import type { Project } from "@/.contentlayer/generated";
 import Link from "next/link";
-import { Eye, View } from "lucide-react";
+import { Eye } from "lucide-react";
+import { ProjectTopics } from "@/app/components/project-topics";
 
 type Props = {
 	project: Project;
@@ -34,6 +35,7 @@ export const Article: React.FC<Props> = ({ project, views }) => {
 				<p className="z-20 mt-4 text-sm  duration-1000 text-zinc-400 group-hover:text-zinc-200">
 					{project.description}
 				</p>
+				<ProjectTopics topics={project.topics} className="mt-4" />
 			</article>
 		</Link>
 	);

@@ -1,7 +1,9 @@
 "use client";
+
 import { ArrowLeft, Eye, Github, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { ProjectTopics } from "@/app/components/project-topics";
 
 type Props = {
 	project: {
@@ -9,6 +11,7 @@ type Props = {
 		title: string;
 		description: string;
 		repository?: string;
+		topics?: string[];
 	};
 
 	views: number;
@@ -108,6 +111,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 						<p className="mt-6 text-lg leading-8 text-zinc-300">
 							{project.description}
 						</p>
+						<ProjectTopics topics={project.topics} className="mt-6 justify-center gap-3" />
 					</div>
 
 					<div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
