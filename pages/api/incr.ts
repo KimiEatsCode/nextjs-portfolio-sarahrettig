@@ -22,7 +22,7 @@ export default async function incr(req: NextRequest): Promise<NextResponse> {
   if (!slug) {
     return new NextResponse("Slug not found", { status: 400 });
   }
-  const ip = req.ip;
+  const ip = req.headers.get("x-forwarded-for") || req.headers.get("cf-connecting-ip");
   if (ip === "73.13.188.130") {
     console.log("id address is yours")
     return new NextResponse(null, { status: 202 });

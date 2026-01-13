@@ -5,7 +5,7 @@ topics:
   - Telemetry
   - Type Safety
   - Tinybird
-repository: chronark/zod-bird
+repository: sarahrettig/zod-bird
 date: "2023-05-21"
 published: true
   
@@ -19,7 +19,7 @@ published: true
 
 
 ```ts
-import { Tinybird } from "@chronark/zod-bird";
+import { Tinybird } from "@sarahrettig/zod-bird";
 import { z } from "zod";
 
 const tb = new Tinybird({ token: "token" });
@@ -36,7 +36,7 @@ export const getEvents = tb.buildPipe({
 });
 
 
-const res = await getEvents({ tenantId: "chronark" })
+const res = await getEvents({ tenantId: "sarahrettig" })
 
 // res.data = {event: string, time: Date}[]
 ```
@@ -44,7 +44,7 @@ const res = await getEvents({ tenantId: "chronark" })
 ## Install
 
 ```
-npm i @chronark/zod-bird
+npm i @sarahrettig/zod-bird
 ```
 
 

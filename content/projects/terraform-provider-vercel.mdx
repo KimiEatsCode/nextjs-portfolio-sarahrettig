@@ -6,8 +6,8 @@ topics:
   - Infrastructure
   - Vercel
 date: "2021-03-16"
-repository: chronark/terraform-provider-vercel
-url: https://registry.terraform.io/providers/chronark/vercel/latest
+repository: sarahrettig/terraform-provider-vercel
+url: https://registry.terraform.io/providers/sarahrettig/vercel/latest
 published: true
 ---
 
@@ -21,7 +21,7 @@ Terraform was great to provision some postgres databases on digital ocean, but t
 terraform {
   required_providers {
     vercel = {
-      source  = "registry.terraform.io/chronark/vercel"
+      source  = "registry.terraform.io/sarahrettig/vercel"
       version = ">=0.10.3"
     }
   }
@@ -35,7 +35,7 @@ resource "vercel_project" "my_project" {
   name = "project-via-terraform"
   git_repository {
     type = "github"
-    repo = "chronark/terraform-provider-vercel"
+    repo = "sarahrettig/terraform-provider-vercel"
   }
 }
 ```
@@ -45,6 +45,6 @@ It gave me the opportunity to contribute to the Terraform ecosystem and my appre
 
 There have been quite a few individuals and teams that have used this provider and I am happy that it has been useful to you.
 
-Now that Vercel have stepped in, I have decided to [deprecate](https://twitter.com/chronark_/status/1517759708983177218) this one on April 23rd 2022. 
+Now that Vercel have stepped in, I have decided to [deprecate](https://twitter.com/sarahrettig_/status/1517759708983177218) this one on April 23rd 2022. 
 
 Please use the [official provider](https://registry.terraform.io/providers/vercel/vercel/latest) instead.
