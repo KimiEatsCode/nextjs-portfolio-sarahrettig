@@ -21,7 +21,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
 	const searchParams = useSearchParams();
-	const fromCourses = searchParams.get("from") === "courses";
+	const fromCourses = searchParams?.get("from") === "courses";
 	const backLink = fromCourses ? "/courses" : "/projects";
 
 	const links: { label: string; href: string }[] = [];

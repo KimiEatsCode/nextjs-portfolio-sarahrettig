@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { allProjects } from "contentlayer/generated";
+import { Navigation } from "@/app/components/nav";
 import { Mdx } from "@/app/components/mdx";
 import { Header } from "./header";
 import "./mdx.css";
@@ -49,6 +50,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div className="bg-zinc-50 min-h-screen">
+      <Navigation />
       <Header project={project} views={views} />
       <ReportView slug={project.slug} />
 
