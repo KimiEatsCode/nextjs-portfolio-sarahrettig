@@ -22,6 +22,11 @@ export function ProjectFilter({ projects, views, topics }: Props) {
 		return projects.filter((project) => project.topics?.includes(selectedTopic));
 	}, [projects, selectedTopic]);
 
+	/**
+	 * Memoizes the computation of a 3-column layout by distributing filtered projects
+	 * across columns using modulo arithmetic. Recalculates only when filteredProjects changes.
+	 * @returns {Project[][]} An array of 3 arrays, each containing projects assigned to that column
+	 */
 	const columns = useMemo(
 		() =>
 			[0, 1, 2].map((column) =>

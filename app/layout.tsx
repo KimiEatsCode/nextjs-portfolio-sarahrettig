@@ -3,17 +3,18 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
     default: "sarahrettig.com",
     template: "%s | sarahrettig.com",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Co-founder of unkey.dev and founder of sarahkimirettig.com",
   openGraph: {
     title: "sarahrettig.com",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
+      "Co-founder of unkey.dev and founder of sarahkimirettig.com",
     url: "https://sarahrettig.com",
     siteName: "sarahrettig.com",
     images: [
@@ -66,10 +67,9 @@ export default function RootLayout({
         <Analytics />
       </head>
       <body
-        className={`bg-rose-600 ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
-          }`}
+        className={`bg-rose-600 ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

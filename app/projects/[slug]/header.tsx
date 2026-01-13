@@ -3,6 +3,7 @@
 import { ArrowLeft, Eye, Github, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ProjectTopics } from "@/app/components/project-topics";
 
 type Props = {
@@ -19,6 +20,9 @@ type Props = {
 export const Header: React.FC<Props> = ({ project, views }) => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
+	const searchParams = useSearchParams();
+	const fromCourses = searchParams.get("from") === "courses";
+	const backLink = fromCourses ? "/courses" : "/projects";
 
 	const links: { label: string; href: string }[] = [];
 	if (project.repository) {
@@ -91,7 +95,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 					</div>
 
 					<Link
-						href="/projects"
+						href={backLink}
 						className={`duration-200 hover:font-medium ${
 							isIntersecting
 								? " text-zinc-400 hover:text-zinc-100"

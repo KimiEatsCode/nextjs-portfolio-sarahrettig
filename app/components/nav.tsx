@@ -1,11 +1,14 @@
 "use client";
+
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
+	const { data: session } = useSession();
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -35,6 +38,12 @@ export const Navigation: React.FC = () => {
 							Projects
 						</Link>
 						<Link
+							href="/courses"
+							className="duration-200 text-zinc-400 hover:text-zinc-100"
+						>
+							Courses
+						</Link>
+						<Link
 							href="/contact"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
 						>
@@ -42,12 +51,29 @@ export const Navigation: React.FC = () => {
 						</Link>
 					</div>
 
-					<Link
-						href="/"
-						className="duration-200 text-zinc-300 hover:text-zinc-100"
-					>
-						<ArrowLeft className="w-6 h-6 " />
-					</Link>
+					<div className="flex items-center gap-4">
+						{session ? (
+							<button
+								onClick={() => signOut()}
+								className="text-sm text-zinc-300 hover:text-white"
+							>
+								Sign out
+							</button>
+						) : (
+							<button
+								onClick={() => signIn("github", { callbackUrl: "/courses" })}
+								className="text-sm text-zinc-300 hover:text-white"
+							>
+								Sign in
+							</button>
+						)}
+						<Link
+							href="/"
+							className="duration-200 text-zinc-300 hover:text-zinc-100"
+						>
+							<ArrowLeft className="w-6 h-6 " />
+						</Link>
+					</div>
 				</div>
 			</div>
 		</header>

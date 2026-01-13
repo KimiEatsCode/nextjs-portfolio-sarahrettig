@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useRouter } from "next/navigation";
 import type { MouseEvent } from "react";
@@ -28,7 +28,7 @@ export function ProjectTopics({ topics, className, clickable = true }: Props) {
 					.join(" ");
 
 				if (clickable) {
-				const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+					const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 						event.stopPropagation();
 						router.push(`/projects/topics/${encodeURIComponent(topic)}`);
 					};
