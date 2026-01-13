@@ -1,5 +1,5 @@
 {
-  "name": "chronark.com",
+  "name": "sarah_rettig_portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,14 @@
     "fmt": "pnpm rome check . --apply-unsafe && pnpm rome format . --write"
   },
   "dependencies": {
-    "@next/font": "^13.5.4",
     "@next/mdx": "^13.5.4",
     "@upstash/redis": "^1.23.3",
     "contentlayer": "^0.3.4",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.284.0",
     "markdown-wasm": "^1.2.0",
-    "next": "^13.5.4",
+    "next": "^16.1.1",
+    "next-app": "^0.0.0",
     "next-contentlayer": "^0.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
