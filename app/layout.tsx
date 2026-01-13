@@ -50,9 +50,9 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const calSans = localFont({
-  src: "../public/fonts/CalSans-SemiBold.ttf",
-  variable: "--font-calsans",
+const rubikmoonrocks = localFont({
+  src: "../app/fonts/rubikmoonrocks-regular-webfont.woff",
+  variable: "--font-rubikmoonrocks",
 });
 
 export default function RootLayout({
@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
+    <html lang="en" className={[inter.variable, rubikmoonrocks.variable].join(" ")}>
       <head>
         <Analytics />
       </head>

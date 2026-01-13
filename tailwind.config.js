@@ -31,7 +31,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-				display: ["var(--font-calsans)"],
+				display: ["var(--font-rubikmoonrocks)"],
 			},
 			backgroundImage: {
 				"gradient-radial":
