@@ -12,8 +12,8 @@ export default function LoginPage() {
       <div className="relative pb-16">
         <Navigation />
         <div className="px-6 pt-20 mx-auto space-y-8 max-w-3xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32 text-center">
-          <h1 className="text-3xl font-bold text-zinc-100">Already signed in</h1>
-          <p className="text-zinc-400">
+          <h1 className="text-3xl font-bold text-black">Already signed in</h1>
+          <p className="text-black">
             You are signed in as {session.user?.name ?? session.user?.email}. Go to{" "}
             <Link className="underline" href="/courses">
               your favorites projects
@@ -29,9 +29,9 @@ export default function LoginPage() {
     <div className="relative pb-16">
       <Navigation />
       <main className="px-6 pt-20 mx-auto max-w-3xl space-y-6 lg:px-8 md:space-y-10 md:pt-24 lg:pt-32 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-zinc-500">User Access</p>
-        <h1 className="text-4xl font-bold text-white sm:text-5xl">Log in to your account</h1>
-        <p className="text-zinc-400">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-black">User Access</p>
+        <h1 className="text-4xl font-bold text-black sm:text-5xl">Log in to your account</h1>
+        <p className="text-black">
           {/* Authenticate with GitHub to track your SCORM courses, progress, and grades. */}
            Authenticate with GitHub to track your favorite projects
         </p>

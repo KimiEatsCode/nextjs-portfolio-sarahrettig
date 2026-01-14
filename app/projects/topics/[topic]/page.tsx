@@ -72,17 +72,17 @@ export default async function TopicPage({ params }: Props) {
         <div className="max-w-2xl mx-auto lg:mx-0">
           <Link
             href="/projects"
-            className="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+            className="text-sm text-black hover:text-black transition-colors duration-200"
           >
             &larr; Back to all projects
           </Link>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-black sm:text-4xl">
             Projects tagged with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-400">
               "{decodedTopic}"
             </span>
           </h2>
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-4 text-black">
             Found {filteredProjects.length} project{filteredProjects.length === 1 ? "" : "s"} with this tag.
           </p>
         </div>

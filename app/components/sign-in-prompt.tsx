@@ -21,7 +21,7 @@ export function SignInPrompt() {
 
 	return (
 		<div className="flex flex-col items-center gap-3 text-center">
-			<p className="text-sm font-semibold text-zinc-400">
+			<p className="text-sm font-semibold text-black">
 				Sign in to view saved favorite projects
 			</p>
 			<div className="flex flex-col gap-2 w-full max-w-sm">
@@ -30,7 +30,7 @@ export function SignInPrompt() {
 						key={provider.id}
 						type="button"
 						onClick={() => signIn(provider.id, { callbackUrl })}
-						className="flex w-full items-center justify-center rounded-full border border-zinc-600 bg-zinc-900/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+						className="flex w-full items-center justify-center rounded-full border border-black bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 					>
 						{provider.label}
 					</button>

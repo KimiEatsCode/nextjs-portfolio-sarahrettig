@@ -21,7 +21,7 @@ export function ProjectTopics({ topics, className, clickable = true }: Props) {
 		<div className={containerClassName}>
 			{topics.map((topic) => {
 				const spanClassName = [
-					"rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-zinc-100 backdrop-blur",
+					"rounded-full border border-black bg-white px-3 py-1 text-xs font-semibold text-black backdrop-blur",
 					clickable ? "cursor-pointer transition-all hover:bg-white/10 hover:border-white/20" : "",
 				]
 					.filter(Boolean)

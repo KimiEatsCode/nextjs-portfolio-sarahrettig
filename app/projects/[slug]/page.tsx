@@ -60,9 +60,9 @@ export default async function PostPage({ params }: Props) {
 
       {isSignedIn && (
         <section className="px-6 py-12 mt-8 border-t border-zinc-900/40 bg-zinc-950/70">
-          <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-4 text-center text-zinc-200 md:flex-row md:text-left">
-            <p className="text-sm text-zinc-400 md:text-base">
-              Mark this course complete to save your score and favorite it for later.
+          <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-4 text-center text-black md:flex-row md:text-left">
+            <p className="text-sm text-black md:text-base">
+              Mark this project as a favorite
             </p>
             <CourseCompletionButton slug={project.slug} initialProgress={progress} />
           </div>

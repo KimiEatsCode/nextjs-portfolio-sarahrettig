@@ -65,7 +65,7 @@ const components = {
 	a: ({ className, ...props }) => (
 		<Link
 			className={clsx(
-				"font-medium text-zinc-900 underline underline-offset-4",
+				"font-medium text-black underline underline-offset-4",
 				className,
 			)}
 			{...props}
@@ -89,7 +89,7 @@ const components = {
 	blockquote: ({ className, ...props }) => (
 		<blockquote
 			className={clsx(
-				"mt-6 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
+				"mt-6 border-l-2 border-black pl-6 italic text-black [&>*]:text-black",
 				className,
 			)}
 			{...props}
@@ -154,7 +154,7 @@ const components = {
 	code: ({ className, ...props }) => (
 		<code
 			className={clsx(
-				"relative rounded border bg-zinc-300 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-zinc-600",
+				"relative rounded border bg-white bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-black",
 				className,
 			)}
 			{...props}

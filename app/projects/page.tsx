@@ -54,10 +54,10 @@ export default async function ProjectsPage() {
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-2xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
             Projects
           </h2>
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-4 text-black">
             
           </p>
         </div>
@@ -69,7 +69,7 @@ export default async function ProjectsPage() {
               <Link href={`/projects/${featured.slug}`}>
                 <article className="relative w-full h-full p-4 md:p-2">
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-xs text-zinc-100">
+                    <div className="text-xs text-black">
                       {featured.date ? (
                         <time dateTime={new Date(featured.date).toISOString()}>
                           {Intl.DateTimeFormat(undefined, {
@@ -80,7 +80,7 @@ export default async function ProjectsPage() {
                         <span>SOON</span>
                       )}
                     </div>
-                    <span className="flex items-center gap-1 text-xs text-zinc-500">
+                    <span className="flex items-center gap-1 text-xs text-black">
                       <Eye className="w-4 h-4" />{" "}
                       {Intl.NumberFormat("en-US", { notation: "compact" }).format(
                         views[featured.slug] ?? 0,
@@ -90,19 +90,15 @@ export default async function ProjectsPage() {
 
                   <h2
                     id="featured-post"
-                    className="mt-4 text-3xl font-bold text-zinc-100 group-hover:text-white sm:text-4xl font-display"
+                    className="mt-4 text-3xl font-bold text-black group-hover:text-black sm:text-4xl font-display"
                   >
                     {featured.title}
                   </h2>
-                  <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
+                  <p className="mt-4 leading-8 duration-150 text-black group-hover:text-black">
                     {featured.description}
                   </p>
                   <ProjectTopics topics={featured.topics} className="mt-6" />
-                  <div className="absolute bottom-4 md:bottom-8">
-                    <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
-                      more project details <span aria-hidden="true">&rarr;</span>
-                    </p>
-                  </div>
+                 
                 </article>
               </Link>
             </Card>

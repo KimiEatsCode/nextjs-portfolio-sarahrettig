@@ -50,19 +50,19 @@ export const Navigation: React.FC = () => {
 					<div className="flex justify-between gap-8">
 						<Link
 							href="/projects"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="duration-200 text-black hover:text-black"
 						>
 							Projects
 						</Link>
 						<Link
 							href="/courses"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="duration-200 text-black hover:text-black"
 						>
 							Favorites
 						</Link>
 						<Link
 							href="/contact"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="duration-200 text-black hover:text-black"
 						>
 							Connect
 						</Link>
@@ -72,7 +72,7 @@ export const Navigation: React.FC = () => {
 						{session ? (
 							<button
 								onClick={() => signOut()}
-								className="text-sm text-zinc-300 hover:text-white"
+								className="text-sm text-black hover:text-black"
 							>
 								Sign out
 							</button>
@@ -83,7 +83,7 @@ export const Navigation: React.FC = () => {
 										key={provider.id}
 										type="button"
 										onClick={() => signIn(provider.id, { callbackUrl })}
-										className="flex w-full items-center justify-center rounded-full border border-zinc-600 bg-zinc-900/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+										className="flex w-full items-center justify-center rounded-full border border-black bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 									>
 										{provider.label}
 									</button>
@@ -93,7 +93,7 @@ export const Navigation: React.FC = () => {
 						
 						<Link
 							href="/"
-							className="duration-200 text-zinc-300 hover:text-zinc-100"
+							className="duration-200 text-black hover:text-black"
 						>
 							<ArrowLeft className="w-6 h-6 " />
 						</Link>
