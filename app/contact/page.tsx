@@ -1,27 +1,27 @@
 "use client";
-import { Github, Mail, Twitter } from "lucide-react";
+import { Github, Mail, X } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 
 const socials = [
 	{
-		icon: <Twitter size={20} />,
-		href: "https://twitter.com/sarahrettig_",
-		label: "Twitter",
-		handle: "@sarahrettig_",
+		icon: <X size={20} />,
+		href: "https://x.com/sarahkimirettig",
+		label: "X",
+		handle: "@sarahkimirettig",
 	},
 	{
 		icon: <Mail size={20} />,
-		href: "mailto:dev@sarahrettig.com",
+		href: "mailto:sarahkimirettig@gmail.com",
 		label: "Email",
-		handle: "dev@sarahrettig.com",
+		handle: "sarahkimirettig",
 	},
 	{
 		icon: <Github size={20} />,
-		href: "https://github.com/sarahrettig",
+		href: "https://github.com/kimieatscode",
 		label: "Github",
-		handle: "sarahrettig",
+		handle: "KimiEatsCode",
 	},
 ];
 
