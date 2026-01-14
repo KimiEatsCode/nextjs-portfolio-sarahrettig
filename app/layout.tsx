@@ -7,19 +7,19 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sara",
-    template: "%s | sarahrettig.com",
+    default: "Sarah Kimi Rettig",
+    template: "%s | sarahkimirettig.com",
   },
-  description: "Co-founder of unkey.dev and founder of sarahkimirettig.com",
+  description: "Portfolio of Sarah Kimi Rettig",
   openGraph: {
     title: "sarahrettig.com",
     description:
-      "Co-founder of unkey.dev and founder of sarahkimirettig.com",
+      "Web Developer and Designer",
     url: "https://sarahrettig.com",
     siteName: "sarahrettig.com",
     images: [
       {
-        url: "https://sarahrettig.com/og.png",
+        url: "https://sarahkimirettig.com/og.png",
         width: 1920,
         height: 1080,
       },
@@ -52,7 +52,7 @@ const inter = Inter({
 });
 
 const rubikmoonrocks = localFont({
-  src: "../app/fonts/rubikmoonrocks-regular-webfont.woff",
+  src: "../app/fonts/Lexend-VariableFont_wght.ttf",
   variable: "--font-rubikmoonrocks",
 });
 
@@ -67,7 +67,7 @@ export default function RootLayout({
         <Analytics />
       </head>
       <body
-        className={`bg-rose-600 ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
+        className={` ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
       >
         <Providers>{children}</Providers>
       </body>

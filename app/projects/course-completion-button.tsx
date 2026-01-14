@@ -55,7 +55,7 @@ export function CourseCompletionButton({ slug, initialProgress }: Props) {
       onClick={handleClick}
       className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
         isFavorite
-          ? "border-rose-500 text-rose-200 hover:border-rose-400 hover:text-rose-100"
+          ? "border-oatmeal-500 text-oatmeal-200 hover:border-oatmeal-400 hover:text-oatmeal-100"
           : "border-zinc-700 text-zinc-200 hover:border-white hover:text-white"
       }`}
     >
