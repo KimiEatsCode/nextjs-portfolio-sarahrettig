@@ -15,7 +15,7 @@ export function CourseCard({ project, progress }: Props) {
     <article className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6 shadow-lg shadow-black/30">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">Course</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">Project</p>
           <h3 className="mt-2 text-2xl font-semibold text-white">{project.title}</h3>
         </div>
         <span className="text-xs text-zinc-500">
@@ -28,7 +28,8 @@ export function CourseCard({ project, progress }: Props) {
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">Progress</p>
           <p className="text-lg font-semibold text-white">
-            {progress ? `${progress.score}% ${progress.grade}` : "Not started"}
+            {/* {progress ? `${progress.score}% ${progress.grade}` : "Not started"} */}
+            {progress ? `${progress.favorite}` : "Not started"}
           </p>
           <p className="text-xs text-zinc-500">
             {progress ? new Date(progress.updatedAt).toLocaleDateString() : "Ready to begin"}
@@ -38,7 +39,7 @@ export function CourseCard({ project, progress }: Props) {
           href={`/projects/${project.slug}?from=courses`}
           className="rounded-full border border-zinc-700 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-200 transition hover:border-white hover:text-white"
         >
-          Take course
+          View Project
         </Link>
       </div>
     </article>

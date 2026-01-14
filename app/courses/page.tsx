@@ -4,15 +4,17 @@ import { allProjects } from "contentlayer/generated";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getCourseProgress, type CourseProgress } from "@/lib/learning";
+import { SignInPrompt } from "@/app/components/sign-in-prompt";
 
 export const metadata = {
-  title: "Courses",
-  description: "Track every SCORM-powered course and grade.",
+  title: "Favorites",
+  description: "Track Your Favorites",
 };
 
 export const revalidate = 0; // Disable caching for this page
 
 export default async function CoursesPage() {
+  
   const session = await getServerSession(authOptions);
   const projects = allProjects.filter((project) => project.published);
 
@@ -36,18 +38,19 @@ export default async function CoursesPage() {
         <div className="space-y-3 text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-zinc-500">SCORM workspace</p>
           <h1 className="text-4xl font-bold text-white sm:text-5xl">
-            Hi, welcome {session?.user?.name ?? "guest"}! Continue learning with tracked courses below.
+            {/* Hi, welcome {session?.user?.name ?? "guest"}! Continue learning with tracked courses below. */}
+             Hi, welcome {session?.user?.name ?? "guest"}! View your Favorite Projects below.
           </h1>
           <p className="text-zinc-400">
-            All projects double as courses. Sign in to launch the SCORM engine and save grades through Upstash.
+            {/* All projects double as courses. Sign in to launch the SCORM engine and save grades through Upstash. */}
           </p>
         </div>
         {!session ? (
           <div className="rounded-2xl border border-dashed border-zinc-700/80 bg-zinc-950/60 px-8 py-10 text-center text-sm text-zinc-400">
-            <p className="text-base font-semibold text-white">Sign in to view progress and grades</p>
+            <SignInPrompt />
             <p className="mt-2">
-              We store your SCORM score in Upstash each time you launch a project. 
-              Once authenticated, every view auto-grades you with 100% completion.
+              {/* We store your SCORM score in Upstash each time you launch a project. 
+              Once authenticated, every view auto-grades you with 100% completion. */}
             </p>
           </div>
         ) : (

@@ -13,8 +13,8 @@ const socials = [
 	},
 	{
 		icon: <Mail size={20} />,
-		href: "mailto:sarahkimirettig@gmail.com",
-		label: "Email",
+		href: "https://letterbird.co/sarahkimirettig",
+		label: "Contact Form",
 		handle: "sarahkimirettig",
 	},
 	{

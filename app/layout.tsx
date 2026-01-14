@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
-    default: "sarahrettig.com",
+    default: "Sara",
     template: "%s | sarahrettig.com",
   },
   description: "Co-founder of unkey.dev and founder of sarahkimirettig.com",

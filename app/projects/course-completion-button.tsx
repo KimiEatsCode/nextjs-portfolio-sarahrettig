@@ -31,7 +31,7 @@ export function CourseCompletionButton({ slug, initialProgress }: Props) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to save course completion");
+        throw new Error("Failed to Save Favorite");
       }
 
       const data = await response.json();
@@ -51,7 +51,7 @@ export function CourseCompletionButton({ slug, initialProgress }: Props) {
       type="button"
       disabled={isSubmitting || isFavorite}
       aria-pressed={isFavorite}
-      aria-label={isFavorite ? "Course completed" : "Mark course complete"}
+      aria-label={isFavorite ? "Favorite" : "Mark as Favorite"}
       onClick={handleClick}
       className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
         isFavorite
@@ -66,7 +66,7 @@ export function CourseCompletionButton({ slug, initialProgress }: Props) {
           strokeWidth: 1.75,
         }}
       />
-      <span>{isFavorite ? "Completed" : "Mark course complete"}</span>
+      <span>{isFavorite ? "Favorite" : "Mark as Favorite"}</span>
     </button>
   );
 }
