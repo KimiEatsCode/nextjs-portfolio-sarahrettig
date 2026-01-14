@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Navigation } from "@/app/components/nav";
 import { CourseCard } from "./course-card";
 import { allProjects } from "contentlayer/generated";
@@ -51,6 +52,16 @@ export default async function CoursesPage() {
             <p className="mt-2">
               {/* We store your SCORM score in Upstash each time you launch a project. 
               Once authenticated, every view auto-grades you with 100% completion. */}
+            </p>
+            <p className="mt-3 text-xs text-black">
+              Already have a favorites account tied to another provider?{" "}
+              <Link
+                className="font-semibold underline"
+                href="/link-account"
+              >
+                Link that provider to this profile
+              </Link>{" "}
+              so you can use either sign-in method.
             </p>
           </div>
         ) : (

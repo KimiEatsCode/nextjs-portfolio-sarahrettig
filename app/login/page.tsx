@@ -1,11 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import { Navigation } from "../components/nav";
 import { SignInPrompt } from "../components/sign-in-prompt";
+
 export default function LoginPage() {
   const { data: session } = useSession();
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+  const callbackUrl = searchParams.get("callbackUrl") ?? "/courses";
+  const showLinkingCTA = error === "OAuthAccountNotLinked";
+  const linkAccountHref = `/link-account?callbackUrl=${encodeURIComponent(
+    callbackUrl,
+  )}`;
 
   if (session) {
     return (
@@ -35,6 +44,17 @@ export default function LoginPage() {
           {/* Authenticate with GitHub to track your SCORM courses, progress, and grades. */}
            Authenticate with GitHub to track your favorite projects
         </p>
+        {showLinkingCTA && (
+          <div className="rounded-2xl border border-orange-200 bg-orange-50 px-5 py-4 text-sm text-orange-900">
+            <p>
+              It looks like that email already belongs to another provider.{" "}
+              <Link className="font-semibold underline" href={linkAccountHref}>
+                Link your accounts
+              </Link>{" "}
+              so you can use either sign-in method.
+            </p>
+          </div>
+        )}
         <SignInPrompt />
         {/* <button
           onClick={() => signIn("github", { callbackUrl: callbackUrl })}
