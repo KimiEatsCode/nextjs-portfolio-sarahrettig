@@ -35,7 +35,9 @@ export default async function CoursesPage() {
     
     // Filter to only show projects that have been favorited
     favoritedProjects = projects.filter((project) => {
+      console.log(project)
       const progress = progressMap[project.slug];
+      console.log(progress)
       return progress?.favorite === true;
     });
   }
