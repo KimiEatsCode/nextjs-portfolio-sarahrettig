@@ -45,9 +45,12 @@ export default function LoginPage() {
            Authenticate with GitHub to track your favorite projects
         </p>
         {showLinkingCTA && (
-          <div className="rounded-2xl border border-orange-200 bg-orange-50 px-5 py-4 text-sm text-orange-900">
-            <p>
-              It looks like that email already belongs to another provider.{" "}
+          <div className="rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-900">
+            <p className="font-semibold">
+              You logged in using a different sign in provider.
+            </p>
+            <p className="mt-1">
+              That email is already tied to another login.{" "}
               <Link className="font-semibold underline" href={linkAccountHref}>
                 Link your accounts
               </Link>{" "}
