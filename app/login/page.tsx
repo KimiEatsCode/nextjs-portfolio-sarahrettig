@@ -44,10 +44,7 @@ export default function LoginPage() {
       <main className="px-6 pt-20 mx-auto max-w-3xl space-y-6 lg:px-8 md:space-y-10 md:pt-24 lg:pt-32 text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-black">User Access</p>
         <h1 className="text-4xl font-bold text-black sm:text-5xl">Log in to your account</h1>
-        <p className="text-black">
-          {/* Authenticate with GitHub to track your SCORM courses, progress, and grades. */}
-           Authenticate with GitHub to track your favorite projects
-        </p>
+        <SignInPrompt />
         {showLinkingCTA && (
           <div className="rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-900">
             <p className="font-semibold">
@@ -63,7 +60,7 @@ export default function LoginPage() {
           </div>
         )}
         
-        <SignInPrompt />
+      
      
       </main>
     </div>

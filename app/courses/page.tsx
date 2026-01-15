@@ -48,25 +48,23 @@ export default async function CoursesPage() {
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         <div className="space-y-3 text-center">
-          <p className="text-xs uppercase tracking-[0.4em] text-black">SCORM workspace</p>
+      
           <h1 className="text-4xl font-bold text-black sm:text-5xl">
             {/* Hi, welcome {session?.user?.name ?? "guest"}! Continue learning with tracked courses below. */}
-             Hi, welcome {session?.user?.name ?? "guest"}! View your Favorite Projects below.
+             Hi, welcome {session?.user?.name ?? "guest"}!
           </h1>
+          <h3>  View your Favorite Projects below.</h3>
    
-          <p className="text-black">
-            {/* All projects double as courses. Sign in to launch the SCORM engine and save grades through Upstash. */}
-          </p>
+
         </div>
         {!session ? (
           <div className="rounded-2xl border border-dashed border-black bg-white px-8 py-10 text-center text-sm text-black">
-            <SignInPrompt />
+            {/* <SignInPrompt /> */}
             <p className="mt-2">
-              {/* We store your SCORM score in Upstash each time you launch a project. 
-              Once authenticated, every view auto-grades you with 100% completion. */}
+          
             </p>
             <p className="mt-3 text-xs text-black">
-              Already have a favorites account tied to another provider?{" "}
+              Already have an account tied to another provider?{" "}
               <Link
                 className="font-semibold underline"
                 href="/link-account"
