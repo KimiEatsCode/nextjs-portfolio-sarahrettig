@@ -35,9 +35,7 @@ export default async function CoursesPage() {
     
     // Filter to only show projects that have been favorited
     favoritedProjects = projects.filter((project) => {
-      console.log(project)
       const progress = progressMap[project.slug];
-      console.log(progress)
       return progress?.favorite === true;
     });
   }
@@ -52,6 +50,7 @@ export default async function CoursesPage() {
             {/* Hi, welcome {session?.user?.name ?? "guest"}! Continue learning with tracked courses below. */}
              Hi, welcome {session?.user?.name ?? "guest"}! View your Favorite Projects below.
           </h1>
+   
           <p className="text-black">
             {/* All projects double as courses. Sign in to launch the SCORM engine and save grades through Upstash. */}
           </p>
@@ -99,8 +98,10 @@ export default async function CoursesPage() {
                     progress={progressMap[project.slug]}
                   />
                 ))}
+
               </div>
             )}
+                 {favoritedProjects}
           </>
         )}
       </div>
