@@ -20,7 +20,7 @@ export default async function CoursesPage() {
   const projects = allProjects.filter((project) => project.published);
 
   const progressMap: Record<string, CourseProgress | null> = {};
-  let favoritedProjects = projects;
+  let favoritedProjects = [] as typeof projects;
   
   if (session?.user?.id) {
     const entries = await Promise.all(
@@ -36,7 +36,8 @@ export default async function CoursesPage() {
     // Filter to only show projects that have been favorited
     favoritedProjects = projects.filter((project) => {
       const progress = progressMap[project.slug];
-      return progress?.favorite === true;
+      // return progress?.favorite === true;
+       return progress?.favorite === true;
     });
   }
 
