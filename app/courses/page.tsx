@@ -17,6 +17,8 @@ export const revalidate = 0; // Disable caching for this page
 export default async function CoursesPage() {
   
   const session = await getServerSession(authOptions);
+  // Debug: log session user id on the server to confirm session population
+  console.log("CoursesPage session user id:", session?.user?.id);
   const projects = allProjects.filter((project) => project.published);
 
   const progressMap: Record<string, CourseProgress | null> = {};

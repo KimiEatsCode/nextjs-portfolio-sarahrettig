@@ -10,7 +10,11 @@ export default function LoginPage() {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
   const error = searchParams?.get("error");
-  const callbackUrl = searchParams?.get("callbackUrl") ?? "/courses";
+  // const callbackUrl = searchParams?.get("callbackUrl") ?? "/courses";
+  const callbackUrl =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:3000/courses"
+			: "/courses";
   const showLinkingCTA = error === "OAuthAccountNotLinked";
   const linkAccountHref = `/link-account?callbackUrl=${encodeURIComponent(
     callbackUrl,
@@ -58,13 +62,9 @@ export default function LoginPage() {
             </p>
           </div>
         )}
+        
         <SignInPrompt />
-        {/* <button
-          onClick={() => signIn("github", { callbackUrl: callbackUrl })}
-          className="inline-flex items-center justify-center rounded-full border border-zinc-600 bg-zinc-900/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          Sign in with GitHub
-        </button> */}
+     
       </main>
     </div>
   );
