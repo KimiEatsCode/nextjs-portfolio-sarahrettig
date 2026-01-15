@@ -20,6 +20,8 @@ export default async function CoursesPage() {
   const projects = allProjects.filter((project) => project.published);
 
   const progressMap: Record<string, CourseProgress | null> = {};
+  let favoritedProjects = projects;
+  
   if (session?.user?.id) {
     const entries = await Promise.all(
       projects.map(async (project) => [
@@ -30,6 +32,12 @@ export default async function CoursesPage() {
     for (const [slug, progress] of entries) {
       progressMap[slug as string] = progress;
     }
+    
+    // Filter to only show projects that have been favorited
+    favoritedProjects = projects.filter((project) => {
+      const progress = progressMap[project.slug];
+      return progress?.favorite === true;
+    });
   }
 
   return (
@@ -65,15 +73,33 @@ export default async function CoursesPage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {projects.map((project) => (
-              <CourseCard
-                key={project.slug}
-                project={project}
-                progress={progressMap[project.slug]}
-              />
-            ))}
-          </div>
+          <>
+            {favoritedProjects.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-black bg-white px-8 py-10 text-center text-sm text-black">
+                <p className="text-lg font-semibold">No favorites yet</p>
+                <p className="mt-2">
+                  Visit the{" "}
+                  <Link
+                    className="font-semibold underline"
+                    href="/projects"
+                  >
+                    projects page
+                  </Link>{" "}
+                  to add projects to your favorites.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {favoritedProjects.map((project) => (
+                  <CourseCard
+                    key={project.slug}
+                    project={project}
+                    progress={progressMap[project.slug]}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
