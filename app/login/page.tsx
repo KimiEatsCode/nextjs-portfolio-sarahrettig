@@ -9,8 +9,8 @@ import { SignInPrompt } from "../components/sign-in-prompt";
 export default function LoginPage() {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
-  const error = searchParams.get("error");
-  const callbackUrl = searchParams.get("callbackUrl") ?? "/courses";
+  const error = searchParams?.get("error");
+  const callbackUrl = searchParams?.get("callbackUrl") ?? "/courses";
   const showLinkingCTA = error === "OAuthAccountNotLinked";
   const linkAccountHref = `/link-account?callbackUrl=${encodeURIComponent(
     callbackUrl,
@@ -47,14 +47,14 @@ export default function LoginPage() {
         {showLinkingCTA && (
           <div className="rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-900">
             <p className="font-semibold">
-              You logged in using a different sign in provider.
+              Error: account exists with a different sign-in provider.
             </p>
             <p className="mt-1">
-              That email is already tied to another login.{" "}
+              Sign in using the provider you originally used, or{" "}
               <Link className="font-semibold underline" href={linkAccountHref}>
-                Link your accounts
+                link your accounts
               </Link>{" "}
-              so you can use either sign-in method.
+              to continue.
             </p>
           </div>
         )}
