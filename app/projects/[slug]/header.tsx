@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Eye, Github, Twitter } from "lucide-react";
+import {Eye, Github, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -82,15 +82,9 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 						</Link>
 					</div>
 
-					<Link
-						href={backLink}
-						className="duration-200 hover:font-medium text-black hover:text-black"
-					>
-						<ArrowLeft className="w-6 h-6 " />
-					</Link>
 				</div>
 			</div>
-			<div className="container mx-auto relative isolate overflow-hidden  py-24 sm:py-32">
+			<div className="container mx-auto relative isolate overflow-hidden sm:py-10">
 				<div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
 					<div className="mx-auto max-w-2xl lg:mx-0">
 						<h1 className="text-4xl font-bold tracking-tight text-black sm:text-6xl font-display">

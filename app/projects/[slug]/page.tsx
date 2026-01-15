@@ -10,6 +10,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getCourseProgress, type CourseProgress } from "@/lib/learning";
 import { CourseCompletionButton } from "../course-completion-button";
+import { SignInPrompt } from "@/app/components/sign-in-prompt";
 
 export const revalidate = 60;
 
@@ -54,16 +55,19 @@ export default async function PostPage({ params }: Props) {
       <Header project={project} views={views} />
       <ReportView slug={project.slug} />
 
-      <article className="px-4 py-12 mx-auto prose prose-zinc prose-quoteless">
+      <article className="px-4 mx-auto prose prose-zinc prose-quoteless">
         <Mdx code={project.body.code} />
       </article>
-
-      {isSignedIn && (
-        <section className="px-6 py-12 mt-8 border-t border-zinc-900/40 bg-zinc-950/70">
+      {!isSignedIn && (
+        <section className="flex flex-row justify-center px-6 py-12 mt-8 border-t border-zinc-900/40 bg-zinc-100/70">
           <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-4 text-center text-black md:flex-row md:text-left">
-            <p className="text-sm text-black md:text-base">
-              Mark this project as a favorite
-            </p>
+            <SignInPrompt />
+          </div>
+        </section>
+      )}
+      {isSignedIn && (
+        <section className="px-6 py-12 mt-8 border-t border-zinc-900/40 bg-zinc-100/70">
+          <div className="mx-auto max-w-6xl flex flex-col items-center justify-between gap-4 text-center text-black md:flex-row md:text-left">
             <CourseCompletionButton slug={project.slug} initialProgress={progress} />
           </div>
         </section>

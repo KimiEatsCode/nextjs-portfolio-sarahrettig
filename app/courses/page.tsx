@@ -53,18 +53,17 @@ export default async function CoursesPage() {
             {/* Hi, welcome {session?.user?.name ?? "guest"}! Continue learning with tracked courses below. */}
              Hi, welcome {session?.user?.name ?? "guest"}!
           </h1>
-          <h3>  View your Favorite Projects below.</h3>
-   
 
         </div>
         {!session ? (
           <div className="rounded-2xl border border-dashed border-black bg-white px-8 py-10 text-center text-sm text-black">
-            {/* <SignInPrompt /> */}
-            <p className="mt-2">
-          
-            </p>
-            <p className="mt-3 text-xs text-black">
+            
+            <SignInPrompt />
+         
+            <p className="mt-3 py-5 text-sm text-black font-semibold underline">
               Already have an account tied to another provider?{" "}
+              </p>
+              <p>
               <Link
                 className="font-semibold underline"
                 href="/link-account"

@@ -18,11 +18,11 @@ export function SignInPrompt() {
 			? "Sign in successful — redirecting to favorites…"
 			: pendingProvider
 			? `Signing in with ${pendingProvider}…`
-			: "Sign in to view saved favorite projects";
+			: "Sign in to view your favorite projects";
 
 	return (
 		<div className="flex flex-col items-center gap-3 text-center">
-			<p className="text-sm font-semibold text-black">{statusMessage}</p>
+			<p className="text-lg font-semibold text-black py-5">{statusMessage}</p>
 			<div className="flex flex-row gap-2 w-full max-w-sm justify-center">
 				{authProviders.map((provider) => (
 					<button

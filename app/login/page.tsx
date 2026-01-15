@@ -25,7 +25,7 @@ export default function LoginPage() {
       <div className="relative pb-16">
         <Navigation />
         <div className="px-6 pt-20 mx-auto space-y-8 max-w-3xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32 text-center">
-          <h1 className="text-3xl font-bold text-black">Already signed in</h1>
+          <h1 className="text-3xl font-bold text-black">Signed in successfully</h1>
           <p className="text-black">
             You are signed in as {session.user?.name ?? session.user?.email}. Go to{" "}
             <Link className="underline" href="/courses">

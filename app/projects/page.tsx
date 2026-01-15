@@ -61,13 +61,12 @@ export default async function ProjectsPage() {
             
           </p>
         </div>
-        {/* <div className="w-full h-px bg-zinc-800" /> */}
 
         {featured && (
-          <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
+          <div className="grid grid-cols-1 gap-8 mx-auto xlg:grid-cols-8 ">
             <Card>
               <Link href={`/projects/${featured.slug}`}>
-                <article className="relative w-full h-full p-4 md:p-2">
+                <article className="relative w-full h-full p-4 mb-4 md:p-2">
                   <div className="flex items-center justify-between gap-2">
                     <div className="text-xs text-black">
                       {featured.date ? (
@@ -77,7 +76,7 @@ export default async function ProjectsPage() {
                           }).format(new Date(featured.date))}
                         </time>
                       ) : (
-                        <span>SOON</span>
+                        <span>COMING SOON</span>
                       )}
                     </div>
                     <span className="flex items-center gap-1 text-xs text-black">
