@@ -101,7 +101,7 @@ export default async function CoursesPage() {
 
               </div>
             )}
-                 {favoritedProjects}
+              
           </>
         )}
       </div>
