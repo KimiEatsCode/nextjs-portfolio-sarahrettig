@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ProjectTopics } from "@/app/components/project-topics";
+import Image from "next/image";
 
 type Props = {
 	project: {
@@ -13,6 +14,7 @@ type Props = {
 		description: string;
 		repository?: string;
 		topics?: string[];
+		heroImage?: string;
 	};
 
 	views: number;
@@ -59,7 +61,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 						: "bg-white/10  border-zinc-200 lg:border-transparent"
 				}`}
 			>
-				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
+				{/* <div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
 					<div className="flex justify-between gap-8">
 						<span
 							title="View counter for this page"
@@ -82,7 +84,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 						</Link>
 					</div>
 
-				</div>
+				</div> */}
 			</div>
 			<div className="container mx-auto relative isolate overflow-hidden sm:py-10">
 				<div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
@@ -105,6 +107,21 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 							))}
 						</div>
 					</div>
+					{project.heroImage 
+					&& (
+						<div className="mx-auto mt-10 max-w-5xl">
+							<div className="w-full aspect-[16/9] overflow-hidden rounded-lg shadow-2xl">
+								<Image
+									src={project.heroImage}
+									alt={project.title}
+									width={1600}
+        						    height={900}
+									className="w-full object-contain"
+									priority
+								/>
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</header>

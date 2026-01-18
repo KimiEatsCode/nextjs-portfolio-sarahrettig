@@ -54,7 +54,7 @@ export const Navigation: React.FC = () => {
 								className="duration-200 text-black hover:text-black"
 							>
 								Projects
-							</Link>≈
+							</Link>
 							<Link
 								href="/courses"
 								className="duration-200 text-black hover:text-black"
