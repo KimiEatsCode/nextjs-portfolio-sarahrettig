@@ -52,7 +52,7 @@ const inter = Inter({
 });
 
 const rubikmoonrocks = localFont({
-  src: "../app/fonts/Lexend-VariableFont_wght.ttf",
+  src: "../app/public/fonts/Lexend-VariableFont_wght.ttf",
   variable: "--font-rubikmoonrocks",
 });
 

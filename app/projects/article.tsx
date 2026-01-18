@@ -21,7 +21,7 @@ export const Article: React.FC<Props> = ({ project, views }) => {
 								)}
 							</time>
 						) : (
-							<span>SOON</span>
+							<span>COMING SOON</span>
 						)}
 					</span>
 					<span className="text-black text-xs  flex items-center gap-1">
