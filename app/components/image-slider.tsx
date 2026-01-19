@@ -91,8 +91,10 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 								alt={image.alt}
 								width={1600}
     						    height={900}
-								className="w-full h-full object-contain"
+								// className="w-full h-full object-contain"
+								className="w-full h-full object-cover"
 								priority={index === 0}
+								 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 							/>
 						</div>
 					))}

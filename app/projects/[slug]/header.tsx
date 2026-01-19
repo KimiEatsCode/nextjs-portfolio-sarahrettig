@@ -70,7 +70,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 						<h1 className="text-4xl font-bold tracking-tight text-black sm:text-6xl font-display">
 							{project.title}
 						</h1>
-						<p className="mt-6 text-lg leading-8 text-black">
+						<p className="mt-6 text-lg text-center leading-8 text-black">
 							{project.description}
 						</p>
 						<ProjectTopics topics={project.topics} className="mt-6 justify-center gap-3" />
@@ -95,8 +95,6 @@ export const Header: React.FC<Props> = ({ project, views }) => {
     />
   </div>
 )}
-
-
 
 					{/* {project.heroImage 
 					&& (
