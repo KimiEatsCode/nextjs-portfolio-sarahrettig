@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ProjectTopics } from "@/app/components/project-topics";
 import Image from "next/image";
+import { ImageSlider } from "../../components/image-slider";
 
 type Props = {
 	project: {
@@ -15,6 +16,7 @@ type Props = {
 		repository?: string;
 		topics?: string[];
 		heroImage?: string;
+		heroImages?: string[];
 	};
 
 	views: number;
@@ -55,36 +57,12 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 			className="relative isolate overflow-hidden bg-gradient-to-tl"
 		>
 			<div
-				className={`fixed inset-x-0 top-0 z-50 backdrop-blur lg:backdrop-blur-none duration-200 border-b lg:bg-transparent ${
+				className={`fixed inset-x-0 top-0 z-50 bg-white duration-200 border-b ${
 					isIntersecting
-						? "bg-zinc-900/0 border-transparent"
-						: "bg-white/10  border-zinc-200 lg:border-transparent"
+						? "bg-white border-transparent"
+						: "bg-white  border-zinc-200 lg:border-transparent"
 				}`}
 			>
-				{/* <div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-					<div className="flex justify-between gap-8">
-						<span
-							title="View counter for this page"
-							className="duration-200 hover:font-medium flex items-center gap-1 text-black hover:text-black"
-						>
-							<Eye className="w-5 h-5" />{" "}
-							{Intl.NumberFormat("en-US", { notation: "compact" }).format(
-								views,
-							)}
-						</span>
-						<Link target="_blank" href="https://twitter.com/sarahrettig_">
-							<Twitter
-								className="w-6 h-6 duration-200 hover:font-medium text-black hover:text-black"
-							/>
-						</Link>
-						<Link target="_blank" href="https://github.com/sarahrettig">
-							<Github
-								className="w-6 h-6 duration-200 hover:font-medium text-black hover:text-black"
-							/>
-						</Link>
-					</div>
-
-				</div> */}
 			</div>
 			<div className="container mx-auto relative isolate overflow-hidden sm:py-10">
 				<div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
@@ -107,7 +85,20 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 							))}
 						</div>
 					</div>
-					{project.heroImage 
+					{project.heroImages && project.heroImages.length > 0 && (
+  <div className="mx-auto mt-10 max-w-5xl w-full px-6">
+    <ImageSlider 
+      images={project.heroImages.map((src, index) => ({
+        src,
+        alt: `${project.title} - Image ${index + 1}`
+      }))} 
+    />
+  </div>
+)}
+
+
+
+					{/* {project.heroImage 
 					&& (
 						<div className="mx-auto mt-10 max-w-5xl">
 							<div className="w-full aspect-[16/9] overflow-hidden rounded-lg shadow-2xl">
@@ -121,7 +112,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 								/>
 							</div>
 						</div>
-					)}
+					)} */}
 				</div>
 			</div>
 		</header>
