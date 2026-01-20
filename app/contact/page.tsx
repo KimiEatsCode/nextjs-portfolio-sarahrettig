@@ -1,21 +1,21 @@
 "use client";
-import { Github, Mail, X } from "lucide-react";
+import { Github, Linkedin, Mail, X } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 
 const socials = [
 	{
-		icon: <X size={20} />,
-		href: "https://x.com/sarahkimirettig",
-		label: "X",
+		icon: <Linkedin size={20} />,
+		href: "https://www.linkedin.com/in/sarahkimirettig/",
+		label: "LinkedIn",
 		handle: "@sarahkimirettig",
 	},
 	{
 		icon: <Mail size={20} />,
 		href: "https://letterbird.co/sarahkimirettig",
 		label: "Contact Form",
-		handle: "sarahkimirettig",
+		handle: "Sarah Rettig",
 	},
 	{
 		icon: <Github size={20} />,
