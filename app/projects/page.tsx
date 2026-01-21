@@ -22,13 +22,32 @@ export default async function ProjectsPage() {
     return acc;
   }, {} as Record<string, number>);
 
-  const featured = allProjects
+  const featuredTopicKeyword = "featured";
+  const sanitizedFeaturedTopicKeyword = featuredTopicKeyword.trim().toLowerCase();
+
+  const featuredByTopic = allProjects
     .filter((p) => p.published)
+    .filter((project) =>
+      project.topics?.some(
+        (topic) => topic.trim().toLowerCase() === sanitizedFeaturedTopicKeyword,
+      ),
+    )
     .sort(
       (a, b) =>
         new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
         new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
-    )[0];
+    );
+
+  const featured =
+    featuredByTopic.length > 0
+      ? featuredByTopic[0]
+      : allProjects
+          .filter((p) => p.published)
+          .sort(
+            (a, b) =>
+              new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
+              new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+          )[0];
   
   const sorted = allProjects
     .filter((p) => p.published)

@@ -22,19 +22,6 @@ export function ProjectFilter({ projects, views, topics }: Props) {
 		return projects.filter((project) => project.topics?.includes(selectedTopic));
 	}, [projects, selectedTopic]);
 
-	/**
-	 * Memoizes the computation of a 3-column layout by distributing filtered projects
-	 * across columns using modulo arithmetic. Recalculates only when filteredProjects changes.
-	 * @returns {Project[][]} An array of 3 arrays, each containing projects assigned to that column
-	 */
-	const columns = useMemo(
-		() =>
-			[0, 1, 2].map((column) =>
-				filteredProjects.filter((_, index) => index % 3 === column),
-			),
-		[filteredProjects],
-	);
-
 	return (
 		<section className="space-y-4">
 			<div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
@@ -65,14 +52,10 @@ export function ProjectFilter({ projects, views, topics }: Props) {
 				</p>
 			) : (
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-					{columns.map((columnProjects, columnIndex) => (
-						<div key={columnIndex} className="grid grid-cols-1 gap-4">
-							{columnProjects.map((project) => (
-								<Card key={project.slug}>
-									<Article project={project} views={views[project.slug] ?? 0} />
-								</Card>
-							))}
-						</div>
+					{filteredProjects.map((project) => (
+						<Card key={project.slug}>
+							<Article project={project} views={views[project.slug] ?? 0} />
+						</Card>
 					))}
 				</div>
 			)}
