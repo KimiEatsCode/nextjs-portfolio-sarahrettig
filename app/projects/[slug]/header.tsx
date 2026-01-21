@@ -96,21 +96,6 @@ export const Header: React.FC<Props> = ({ project, views }) => {
   </div>
 )}
 
-					{/* {project.heroImage 
-					&& (
-						<div className="mx-auto mt-10 max-w-5xl">
-							<div className="w-full aspect-[16/9] overflow-hidden rounded-lg shadow-2xl">
-								<Image
-									src={project.heroImage}
-									alt={project.title}
-									width={1600}
-        						    height={900}
-									className="w-full object-contain"
-									priority
-								/>
-							</div>
-						</div>
-					)} */}
 				</div>
 			</div>
 		</header>

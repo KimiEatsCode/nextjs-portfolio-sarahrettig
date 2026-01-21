@@ -33,9 +33,6 @@ export const Project = defineDocumentType(() => ({
 			type: "string",
 			required: true,
 		},
-		heroImage: {
-			type: "string",
-		},
 		heroImages: {
 			type: "list",
 			of: {
