@@ -4,10 +4,7 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "@/app/components/nav";
 import { Card } from "@/app/components/card";
 import { Article } from "@/app/projects/article";
-import { Redis } from "@upstash/redis";
 import { notFound } from "next/navigation";
-
-const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 
@@ -50,16 +47,6 @@ export default async function TopicPage({ params }: Props) {
     notFound();
   }
 
-  // Get view counts for all filtered projects
-  const views = (
-    await redis.mget<number[]>(
-      ...filteredProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[filteredProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
-
   // Split projects into 3 columns
   const columns = [0, 1, 2].map((column) =>
     filteredProjects.filter((_, index) => index % 3 === column),
@@ -93,7 +80,7 @@ export default async function TopicPage({ params }: Props) {
             <div key={columnIndex} className="grid grid-cols-1 gap-4">
               {columnProjects.map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project} />
                 </Card>
               ))}
             </div>

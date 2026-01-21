@@ -1,6 +1,5 @@
 "use client";
 
-import {Eye, Github, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -18,10 +17,8 @@ type Props = {
 		heroImage?: string;
 		heroImages?: string[];
 	};
-
-	views: number;
 };
-export const Header: React.FC<Props> = ({ project, views }) => {
+export const Header: React.FC<Props> = ({ project }) => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
 	const searchParams = useSearchParams();

@@ -4,8 +4,6 @@ import { Navigation } from "@/app/components/nav";
 import { Mdx } from "@/app/components/mdx";
 import { Header } from "./header";
 import "./mdx.css";
-import { ReportView } from "./view";
-import { Redis } from "@upstash/redis";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getCourseProgress, type CourseProgress } from "@/lib/learning";
@@ -14,7 +12,6 @@ import { SignInPrompt } from "@/app/components/sign-in-prompt";
 import { Card } from "@/app/components/card";
 import Link from "next/link";
 import { ProjectTopics } from "@/app/components/project-topics";
-import { Eye } from "lucide-react";
 
 export const revalidate = 60;
 
@@ -23,8 +20,6 @@ type Props = {
     slug: string;
   }>;
 };
-
-const redis = Redis.fromEnv();
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return allProjects
@@ -43,9 +38,6 @@ export default async function PostPage({ params }: Props) {
     notFound();
   }
 
-  const views =
-    (await redis.get<number>(["pageviews", "projects", slug].join(":"))) ?? 0;
-
   // Get related projects with same tags
   const relatedProjects = allProjects
     .filter((p) => 
@@ -54,13 +46,6 @@ export default async function PostPage({ params }: Props) {
       p.topics?.some((topic) => project.topics?.includes(topic))
     )
     .slice(0, 3);
-
-  // Get view counts for related projects
-  const relatedViews: Record<string, number> = {};
-  for (const relatedProject of relatedProjects) {
-    const count = await redis.get<number>(["pageviews", "projects", relatedProject.slug].join(":"));
-    relatedViews[relatedProject.slug] = count ?? 0;
-  }
 
   const session = await getServerSession(authOptions);
   const isSignedIn = Boolean(session?.user?.id);
@@ -73,8 +58,7 @@ export default async function PostPage({ params }: Props) {
   return (
     <div className="bg-zinc-50 min-h-screen">
       <Navigation />
-      <Header project={project} views={views} />
-      <ReportView slug={project.slug} />
+      <Header project={project} />
 
       <article className="px-4 mx-auto text-center prose prose-zinc prose-quoteless">
         <Mdx code={project.body.code} />
@@ -101,12 +85,6 @@ export default async function PostPage({ params }: Props) {
                             <span>COMING SOON</span>
                           )}
                         </div>
-                        <span className="flex items-center gap-1 text-xs text-zinc-600">
-                          <Eye className="w-4 h-4" />
-                          {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                            relatedViews[relatedProject.slug] ?? 0,
-                          )}
-                        </span>
                       </div>
 
                       <h3 className="text-xl font-bold text-black hover:text-zinc-700 transition-colors font-display line-clamp-2">

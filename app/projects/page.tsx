@@ -6,21 +6,9 @@ import { Card } from "../components/card";
 import { ProjectTopics } from "@/app/components/project-topics";
 import { Article } from "./article";
 import { ProjectFilter } from "./project-filter";
-import { Redis } from "@upstash/redis";
-import { Eye } from "lucide-react";
-
-const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
 
   const featuredTopicKeyword = "featured";
   const sanitizedFeaturedTopicKeyword = featuredTopicKeyword.trim().toLowerCase();
@@ -96,12 +84,6 @@ export default async function ProjectsPage() {
                         <span>COMING SOON</span>
                       )}
                     </div>
-                    <span className="flex items-center gap-1 text-xs text-black">
-                      <Eye className="w-4 h-4" />{" "}
-                      {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                        views[featured.slug] ?? 0,
-                      )}
-                    </span>
                   </div>
 
                   <h2
@@ -123,7 +105,7 @@ export default async function ProjectsPage() {
         )}
         <div className="hidden w-full h-px md:block bg-zinc-800" />
 
-        <ProjectFilter projects={sorted} views={views} topics={topics} />
+        <ProjectFilter projects={sorted} topics={topics} />
       </div>
     </div>
   );

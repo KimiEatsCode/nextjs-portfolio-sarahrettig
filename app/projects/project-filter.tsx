@@ -7,11 +7,10 @@ import { Article } from "@/app/projects/article";
 
 type Props = {
 	projects: Project[];
-	views: Record<string, number>;
 	topics: string[];
 };
 
-export function ProjectFilter({ projects, views, topics }: Props) {
+export function ProjectFilter({ projects, topics }: Props) {
 	const [selectedTopic, setSelectedTopic] = useState("all");
 
 	const filteredProjects = useMemo(() => {
@@ -56,7 +55,7 @@ export function ProjectFilter({ projects, views, topics }: Props) {
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 					{filteredProjects.map((project) => (
 								<Card key={project.slug}>
-									<Article project={project} views={views[project.slug] ?? 0} />
+									<Article project={project} />
 								</Card>
 					))}
 				</div>
