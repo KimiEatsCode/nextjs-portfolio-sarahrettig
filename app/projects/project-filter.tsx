@@ -41,7 +41,7 @@ export function ProjectFilter({ projects, topics }: Props) {
 						))}
 					</select>
 				</div>
-				<p className="text-xs text-black md:text-right">
+				<p className="text-sm text-black md:text-right">
 					Displaying {filteredProjects.length} project
 					{filteredProjects.length === 1 ? "" : "s"}
 				</p>
