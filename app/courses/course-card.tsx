@@ -12,6 +12,10 @@ type Props = {
 
 export function CourseCard({ project, progress }: Props) {
   return (
+     <Link
+          href={`/projects/${project.slug}?from=courses`}
+          className="rounded-full border border-black px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-black transition hover:border-black hover:text-black"
+        >
     <article className="overflow-hidden rounded-2xl border border-black bg-white p-6 shadow-lg shadow-black/30">
       <div className="flex items-center justify-between gap-4">
         <div>
@@ -26,7 +30,7 @@ export function CourseCard({ project, progress }: Props) {
       <ProjectTopics topics={project.topics} className="mt-4" />
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-black">Progress</p>
+         
           <p className="text-lg font-semibold text-black">
             {progress ? (
               progress.favorite ? (
@@ -53,13 +57,11 @@ export function CourseCard({ project, progress }: Props) {
             {progress ? new Date(progress.updatedAt).toLocaleDateString() : "Ready to begin"}
           </p>
         </div>
-        <Link
-          href={`/projects/${project.slug}?from=courses`}
-          className="rounded-full border border-black px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-black transition hover:border-black hover:text-black"
-        >
+     
           View Project
-        </Link>
+     
       </div>
     </article>
+       </Link>
   );
 }
