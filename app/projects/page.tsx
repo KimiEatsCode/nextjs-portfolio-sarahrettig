@@ -33,10 +33,8 @@ export default async function ProjectsPage() {
   const sorted = allProjects
     .filter((p) => p.published)
     .filter((project) => project.slug !== featured?.slug)
-    .sort(
-      (a, b) =>
-        new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+    .sort((a, b) =>
+      a.title.localeCompare(b.title, undefined, { sensitivity: "base" }),
     );
 
   const topics = Array.from(
