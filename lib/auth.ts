@@ -5,7 +5,16 @@ import { NextAuthOptions } from "next-auth";
 import { PrismaClient } from "@prisma/client";
 import type { AdapterAccount } from "next-auth/adapters";
 
-const prisma = new PrismaClient();
+// PrismaClient singleton to avoid multiple instances in development
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
+
+const prisma = globalForPrisma.prisma ?? new PrismaClient();
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma;
+}
 
 const linkedProvidersMap = new Map<string, Set<string>>();
 
