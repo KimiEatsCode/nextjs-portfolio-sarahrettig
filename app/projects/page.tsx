@@ -42,12 +42,12 @@ export default async function ProjectsPage() {
     featuredByTopic.length > 0
       ? featuredByTopic[0]
       : allProjects
-          .filter((p) => p.published)
-          .sort(
-            (a, b) =>
-              new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-              new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
-          )[0];
+    .filter((p) => p.published)
+    .sort(
+      (a, b) =>
+        new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
+        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+    )[0];
   
   const sorted = allProjects
     .filter((p) => p.published)

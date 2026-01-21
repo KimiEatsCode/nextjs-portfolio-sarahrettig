@@ -1,36 +1,37 @@
-import { Redis } from "@upstash/redis";
-import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import { NextAuthOptions } from "next-auth";
+import { PrismaClient } from "@prisma/client";
 import type { AdapterAccount } from "next-auth/adapters";
 
-const redis = Redis.fromEnv();
-const adapter = UpstashRedisAdapter(redis);
+const prisma = new PrismaClient();
 
-const linkedProvidersKeyPrefix = "user:linked-providers:";
-const buildLinkedProvidersKey = (userId: string) =>
-  `${linkedProvidersKeyPrefix}${userId}`;
+const linkedProvidersMap = new Map<string, Set<string>>();
 
 export async function addLinkedProvider(userId: string, providerId: string) {
-  await redis.sadd(buildLinkedProvidersKey(userId), providerId);
+  if (!linkedProvidersMap.has(userId)) {
+    linkedProvidersMap.set(userId, new Set());
+  }
+  linkedProvidersMap.get(userId)?.add(providerId);
 }
 
 export async function getLinkedProviderIds(userId: string) {
-  const providers = await redis.smembers(buildLinkedProvidersKey(userId));
-  return providers ?? [];
+  const providers = linkedProvidersMap.get(userId);
+  return providers ? Array.from(providers) : [];
 }
 
 export async function linkAccountToUser(
   userId: string,
   account: Partial<AdapterAccount> & Pick<AdapterAccount, 'provider' | 'type' | 'providerAccountId'>,
 ) {
-  await adapter.linkAccount({ ...account, userId } as AdapterAccount);
+  // The account is already created by NextAuth's PrismaAdapter
+  // Just track the linked provider
   await addLinkedProvider(userId, account.provider);
 }
 
 export const authOptions: NextAuthOptions = {
-  adapter,
+  adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID ?? "",

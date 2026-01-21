@@ -19,7 +19,9 @@ export function ProjectFilter({ projects, views, topics }: Props) {
 			return projects;
 		}
 
-		return projects.filter((project) => project.topics?.includes(selectedTopic));
+		return projects.filter((project) =>
+			project.topics?.some((topic) => topic.trim() === selectedTopic),
+		);
 	}, [projects, selectedTopic]);
 
 	return (
@@ -53,9 +55,9 @@ export function ProjectFilter({ projects, views, topics }: Props) {
 			) : (
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 					{filteredProjects.map((project) => (
-						<Card key={project.slug}>
-							<Article project={project} views={views[project.slug] ?? 0} />
-						</Card>
+								<Card key={project.slug}>
+									<Article project={project} views={views[project.slug] ?? 0} />
+								</Card>
 					))}
 				</div>
 			)}
