@@ -1,0 +1,9 @@
+.prose ul {
+    list-style:none!important;
+    margin-left: 0px;
+    padding: 0;
+}
+
+.prose ul li {
+    padding:0!important;
+}
