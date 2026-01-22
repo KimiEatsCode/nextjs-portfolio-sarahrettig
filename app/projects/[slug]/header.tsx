@@ -98,7 +98,7 @@ export const Header: React.FC<Props> = ({ project }) => {
 						</div>
 					</div>
 					{project.heroImages && project.heroImages.length > 0 && (
-  <div className="mx-auto mt-10 max-w-5xl w-full px-6">
+  <div className="mx-auto max-w-5xl w-full px-6">
     <ImageSlider 
       images={project.heroImages.map((src, index) => ({
         src,
