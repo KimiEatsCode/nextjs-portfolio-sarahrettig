@@ -29,13 +29,11 @@ export const Project = defineDocumentType(() => ({
 			type: "string",
 			required: true,
 		},
-			jobTitle: {
+		jobTitle: {
 			type: "string",
-			required: true,
 		},
-			companyName: {
+		companyName: {
 			type: "string",
-			required: true,
 		},
 		description: {
 			type: "string",
