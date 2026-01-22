@@ -102,7 +102,8 @@ export const Header: React.FC<Props> = ({ project }) => {
     <ImageSlider 
       images={project.heroImages.map((src, index) => ({
         src,
-        alt: `${project.title} - Image ${index + 1}`
+        alt: `${project.title} - Image ${index + 1}`,
+		href: src
       }))} 
     />
   </div>

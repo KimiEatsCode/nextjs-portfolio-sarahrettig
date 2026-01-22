@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Navigation } from "@/app/components/nav";
 import { LinkAccountPrompt } from "@/app/components/link-account-prompt";
+import { DeleteAccountPanel } from "@/app/components/delete-account-panel";
 import { authProviders } from "@/app/components/auth-providers";
 import { getServerSession } from "next-auth";
 import { authOptions, getLinkedProviderIds } from "@/lib/auth";
@@ -95,6 +96,8 @@ export default async function LinkAccountPage({
 						</ul>
 					</div>
 				)}
+
+				<DeleteAccountPanel />
 
 				<p className="text-center text-xs text-zinc-500">
 					Once linked, you can sign in with any of the listed providers and still land in the same favorites account.

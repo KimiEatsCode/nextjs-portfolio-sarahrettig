@@ -12,15 +12,18 @@ import { ImageSlider } from "@/app/components/image-slider";
   images={[
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg",
-      alt: "PhilaWorks printed banner design - front view"
+      alt: "PhilaWorks printed banner design - front view",
+      href: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg"
     },
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg",
-      alt: "PhilaWorks printed banner design - detail view"
+      alt: "PhilaWorks printed banner design - detail view",
+      href: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg"
     },
     {
       src: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg",
-      alt: "PhilaWorks printed banner design - installation"
+      alt: "PhilaWorks printed banner design - installation",
+      href: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg"
     }
   ]}
 />
@@ -53,15 +56,18 @@ import { ImageSlider } from "@/app/components/image-slider";
   images={[
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg",
-      alt: "Banner design - main view"
+      alt: "Banner design - main view",
+      href: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg"
     },
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg",
-      alt: "Banner design - close up"
+      alt: "Banner design - close up",
+      href: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg"
     },
     {
       src: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg",
-      alt: "Banner design - installed"
+      alt: "Banner design - installed",
+      href: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg"
     }
   ]}
 />
@@ -85,7 +91,7 @@ import { ImageSlider } from "@/app/components/image-slider";
 
 | Prop | Type | Required | Description |
 |------|------|----------|-------------|
-| `images` | `Array<{src: string, alt: string}>` | Yes | Array of image objects with src and alt text |
+| `images` | `Array<{src: string, alt: string, href?: string}>` | Yes | Array of image objects with src, alt text, and optional link |
 | `className` | `string` | No | Additional CSS classes for the container |
 
 ## Customization

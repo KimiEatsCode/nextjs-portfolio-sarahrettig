@@ -30,6 +30,10 @@ export async function getLinkedProviderIds(userId: string) {
   return providers ? Array.from(providers) : [];
 }
 
+export function clearLinkedProviders(userId: string) {
+  linkedProvidersMap.delete(userId);
+}
+
 export async function linkAccountToUser(
   userId: string,
   account: Partial<AdapterAccount> & Pick<AdapterAccount, 'provider' | 'type' | 'providerAccountId'>,

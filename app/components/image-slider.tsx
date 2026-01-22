@@ -7,6 +7,7 @@ type ImageSliderProps = {
 	images: {
 		src: string;
 		alt: string;
+		href?: string;
 	}[];
 	className?: string;
 };
@@ -86,16 +87,34 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 								index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
 							}`}
 						>
-							<Image
-								src={image.src}
-								alt={image.alt}
-								width={1600}
-    						    height={900}
-								// className="w-full h-full object-contain"
-								className="w-full h-full object-cover"
-								priority={index === 0}
-								 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-							/>
+							<a
+								href={image.href ?? image.src}
+								className="block h-full w-full"
+								aria-label={`Open ${image.alt || `image ${index + 1}`}`}
+							>
+								<Image
+									src={image.src}
+									alt={image.alt}
+									width={1600}
+									height={900}
+									// className="w-full h-full object-contain"
+									className="w-full h-full object-cover"
+									priority={index === 0}
+									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+								/>
+								<span
+									className="pointer-events-none absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur"
+									aria-hidden="true"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										className="h-6 w-6 fill-current"
+										aria-hidden="true"
+									>
+										<path d="M7 3H3v4h2V5h2V3zm12 0h-4v2h2v2h2V3zM5 17H3v4h4v-2H5v-2zm16 0h-2v2h-2v2h4v-4zM10 10h4v4h-4z" />
+									</svg>
+								</span>
+							</a>
 						</div>
 					))}
 				</div>
