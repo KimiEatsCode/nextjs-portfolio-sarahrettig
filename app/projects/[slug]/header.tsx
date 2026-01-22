@@ -16,6 +16,8 @@ type Props = {
 		topics?: string[];
 		heroImage?: string;
 		heroImages?: string[];
+		jobTitle?: string;
+		companyName?: string;
 	};
 };
 export const Header: React.FC<Props> = ({ project }) => {
@@ -67,6 +69,13 @@ export const Header: React.FC<Props> = ({ project }) => {
 						<h1 className="text-4xl font-bold tracking-tight text-black sm:text-6xl font-display">
 							{project.title}
 						</h1>
+						{(project.jobTitle || project.companyName) && (
+							<div className="mt-4 text-base text-zinc-600">
+								{project.jobTitle && <span className="font-semibold">{project.jobTitle}</span>}
+								{project.jobTitle && project.companyName && <span className="mx-2">•</span>}
+								{project.companyName && <span>{project.companyName}</span>}
+							</div>
+						)}
 						<p className="mt-6 text-lg text-center leading-8 text-black">
 							{project.description}
 						</p>
