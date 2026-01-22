@@ -8,6 +8,10 @@ import { notFound } from "next/navigation";
 
 export const revalidate = 60;
 
+function normalizeTopic(topic: string) {
+  return topic.trim().toLowerCase().replace(/[\s_-]+/g, "");
+}
+
 type Props = {
   params: Promise<{
     topic: string;
@@ -16,13 +20,15 @@ type Props = {
 
 export async function generateStaticParams(): Promise<{ topic: string }[]> {
   const topics = Array.from(
-    new Set(
+    new Map(
       allProjects
         .filter((p) => p.published)
         .flatMap((project) => project.topics ?? [])
-        .map((topic) => topic.trim()),
-    ),
-  ).filter(Boolean);
+        .map((topic) => topic.trim())
+        .filter(Boolean)
+        .map((topic) => [normalizeTopic(topic), topic] as const),
+    ).entries(),
+  ).map(([value]) => value);
 
   return topics.map((topic) => ({
     topic: encodeURIComponent(topic),
@@ -32,11 +38,26 @@ export async function generateStaticParams(): Promise<{ topic: string }[]> {
 export default async function TopicPage({ params }: Props) {
   const { topic } = await params;
   const decodedTopic = decodeURIComponent(topic);
+  const normalizedTopic = normalizeTopic(decodedTopic);
+
+  const displayTopic =
+    Array.from(
+      new Map(
+        allProjects
+          .filter((p) => p.published)
+          .flatMap((project) => project.topics ?? [])
+          .map((t) => t.trim())
+          .filter(Boolean)
+          .map((t) => [normalizeTopic(t), t] as const),
+      ).entries(),
+    ).find(([value]) => value === normalizedTopic)?.[1] ?? decodedTopic;
 
   // Filter projects by topic
   const filteredProjects = allProjects
     .filter((p) => p.published)
-    .filter((project) => project.topics?.includes(decodedTopic))
+    .filter((project) =>
+      project.topics?.some((t) => normalizeTopic(t) === normalizedTopic),
+    )
     .sort(
       (a, b) =>
         new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
@@ -66,7 +87,7 @@ export default async function TopicPage({ params }: Props) {
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-black sm:text-4xl">
             Projects tagged with{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-400">
-              "{decodedTopic}"
+              "{displayTopic}"
             </span>
           </h2>
           <p className="mt-4 text-black">

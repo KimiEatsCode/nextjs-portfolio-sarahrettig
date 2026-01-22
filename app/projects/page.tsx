@@ -9,6 +9,8 @@ import { ProjectFilter } from "./project-filter";
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
+  const normalizeTopic = (topic: string) =>
+    topic.trim().toLowerCase().replace(/[\s_-]+/g, "");
 
   const featuredTopicKeyword = "featured";
   const sanitizedFeaturedTopicKeyword = featuredTopicKeyword.trim().toLowerCase();
@@ -45,14 +47,16 @@ export default async function ProjectsPage() {
     );
 
   const topics = Array.from(
-    new Set(
+    new Map(
       allProjects
         .flatMap((project) => project.topics ?? [])
-        .map((topic) => topic.trim()),
-    ),
+        .map((topic) => topic.trim())
+        .filter(Boolean)
+        .map((topic) => [normalizeTopic(topic), topic] as const),
+    ).entries(),
   )
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b));
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
 
   return (
     <div className="relative pb-16">

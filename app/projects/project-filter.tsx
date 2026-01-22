@@ -5,9 +5,13 @@ import type { Project } from "@/.contentlayer/generated";
 import { Card } from "@/app/components/card";
 import { Article } from "@/app/projects/article";
 
+function normalizeTopic(topic: string) {
+	return topic.trim().toLowerCase().replace(/[\s_-]+/g, "");
+}
+
 type Props = {
 	projects: Project[];
-	topics: string[];
+	topics: { label: string; value: string }[];
 };
 
 export function ProjectFilter({ projects, topics }: Props) {
@@ -19,7 +23,7 @@ export function ProjectFilter({ projects, topics }: Props) {
 		}
 
 		return projects.filter((project) =>
-			project.topics?.some((topic) => topic.trim() === selectedTopic),
+			project.topics?.some((topic) => normalizeTopic(topic) === selectedTopic),
 		);
 	}, [projects, selectedTopic]);
 
@@ -35,8 +39,8 @@ export function ProjectFilter({ projects, topics }: Props) {
 					>
 						<option value="all">All topics</option>
 						{topics.map((topic) => (
-							<option key={topic} value={topic}>
-								{topic}
+							<option key={topic.value} value={topic.value}>
+								{topic.label}
 							</option>
 						))}
 					</select>

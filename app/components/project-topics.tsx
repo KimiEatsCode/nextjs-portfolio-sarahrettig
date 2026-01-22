@@ -3,6 +3,10 @@
 import { useRouter } from "next/navigation";
 import type { MouseEvent } from "react";
 
+function normalizeTopic(topic: string) {
+	return topic.trim().toLowerCase().replace(/[\s_-]+/g, "");
+}
+
 type Props = {
 	topics?: string[];
 	className?: string;
@@ -30,12 +34,12 @@ export function ProjectTopics({ topics, className, clickable = true }: Props) {
 				if (clickable) {
 					const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 						event.stopPropagation();
-						router.push(`/projects/topics/${encodeURIComponent(topic)}`);
+						router.push(`/projects/topics/${encodeURIComponent(normalizeTopic(topic))}`);
 					};
 
 					return (
 						<button
-							key={topic}
+							key={normalizeTopic(topic)}
 							type="button"
 							className={spanClassName}
 							onClick={handleClick}
