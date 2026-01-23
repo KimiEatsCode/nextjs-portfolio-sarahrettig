@@ -58,6 +58,7 @@ export default async function PostPage({ params }: Props) {
   return (
     <div className="bg-zinc-50 min-h-screen">
       <Navigation />
+      
       <Header project={project} />
 
       <article className="px-4 mx-auto text-center prose prose-zinc prose-quoteless">
