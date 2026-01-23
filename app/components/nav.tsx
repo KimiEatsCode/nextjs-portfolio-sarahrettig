@@ -55,11 +55,17 @@ export const Navigation: React.FC = () => {
 							>
 								Projects
 							</Link>
+								<Link
+								href="https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing"
+								className="duration-200 text-black hover:text-black"
+							>
+								Resume
+							</Link>
 							<Link
 								href="/courses"
 								className="duration-200 text-black hover:text-black"
 							>
-								Favorites
+								Your Favorites
 							</Link>
 							<Link
 								href="/contact"
