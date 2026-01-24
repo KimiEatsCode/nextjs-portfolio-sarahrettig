@@ -3,6 +3,7 @@ import React from "react";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
+   { name: "Resume", 	href: "https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing" },
   { name: "Contact", href: "/contact" },
 ];
 
