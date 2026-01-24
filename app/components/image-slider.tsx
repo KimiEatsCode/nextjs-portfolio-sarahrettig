@@ -3,12 +3,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
+type SliderImage = {
+	src: string;
+	alt: string;
+	href?: string;
+	caption?: string;
+};
+
 type ImageSliderProps = {
-	images: {
-		src: string;
-		alt: string;
-		href?: string;
-	}[];
+	images: SliderImage[];
 	className?: string;
 };
 
@@ -101,6 +104,11 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 									priority={index === 0}
 									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 								/>
+								{image.caption && (
+									<p className="pointer-events-none absolute left-4 right-4 bottom-4 rounded-2xl bg-black/70 px-4 py-2 text-sm text-white shadow-lg backdrop-blur">
+										{image.caption}
+									</p>
+								)}
 								<span
 									className="pointer-events-none absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur"
 									aria-hidden="true"

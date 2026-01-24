@@ -7,6 +7,12 @@ import { ProjectTopics } from "@/app/components/project-topics";
 import Image from "next/image";
 import { ImageSlider } from "../../components/image-slider";
 
+type HeroImage = {
+	src: string;
+	alt?: string;
+	caption?: string;
+};
+
 type Props = {
 	project: {
 		url?: string;
@@ -14,8 +20,7 @@ type Props = {
 		description: string;
 		repository?: string;
 		topics?: string[];
-		heroImage?: string;
-		heroImages?: string[];
+		heroImages?: HeroImage[];
 		jobTitle?: string;
 		companyName?: string;
 	};
@@ -98,16 +103,17 @@ export const Header: React.FC<Props> = ({ project }) => {
 						</div>
 					</div>
 					{project.heroImages && project.heroImages.length > 0 && (
-  <div className="mx-auto max-w-5xl w-full px-6">
-    <ImageSlider 
-      images={project.heroImages.map((src, index) => ({
-        src,
-        alt: `${project.title} - Image ${index + 1}`,
-		href: src
-      }))} 
-    />
-  </div>
-)}
+						<div className="mx-auto max-w-5xl w-full px-6">
+							<ImageSlider
+								images={project.heroImages.map((image, index) => ({
+									src: image.src,
+									alt: image.alt ?? `${project.title} - Image ${index + 1}`,
+									caption: image.caption,
+									href: image.src,
+								}))}
+							/>
+						</div>
+					)}
 
 				</div>
 			</div>

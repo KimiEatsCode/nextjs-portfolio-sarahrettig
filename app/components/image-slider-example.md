@@ -13,16 +13,19 @@ import { ImageSlider } from "@/app/components/image-slider";
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg",
       alt: "PhilaWorks printed banner design - front view",
+      caption: "Front view of the CareerLink banner concept.",
       href: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg"
     },
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg",
       alt: "PhilaWorks printed banner design - detail view",
+      caption: "Detail showing typography and iconography.",
       href: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg"
     },
     {
       src: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg",
       alt: "PhilaWorks printed banner design - installation",
+      caption: "Installed banner showing scale at an event.",
       href: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg"
     }
   ]}
@@ -57,16 +60,19 @@ import { ImageSlider } from "@/app/components/image-slider";
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg",
       alt: "Banner design - main view",
+      caption: "Front view of the CareerLink banner concept.",
       href: "/images/philaworks/philaworks-portfolio-piece-printed-banner.jpg"
     },
     {
       src: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg",
       alt: "Banner design - close up",
+      caption: "Highlighting typography and iconography.",
       href: "/images/philaworks/philaworks-portfolio-piece-printed-banner-1.jpg"
     },
     {
       src: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg",
       alt: "Banner design - installed",
+      caption: "Banner displayed at the event venue.",
       href: "/images/philaworks/philworks-portfolio-piece-printed-banner-2.jpg"
     }
   ]}
@@ -82,6 +88,7 @@ import { ImageSlider } from "@/app/components/image-slider";
 - ✅ Fully accessible with ARIA labels and keyboard navigation
 - ✅ Smooth transitions between slides
 - ✅ Dot navigation for direct slide access
+- ✅ Optional captions with translucent overlay
 - ✅ Next.js Image optimization built-in
 - ✅ Responsive design with Tailwind CSS
 - ✅ Previous/Next arrow buttons
@@ -91,7 +98,7 @@ import { ImageSlider } from "@/app/components/image-slider";
 
 | Prop | Type | Required | Description |
 |------|------|----------|-------------|
-| `images` | `Array<{src: string, alt: string, href?: string}>` | Yes | Array of image objects with src, alt text, and optional link |
+| `images` | `Array<{src: string, alt: string, caption?: string, href?: string}>` | Yes | Array of image objects with src, alt text, optional caption, and optional link |
 | `className` | `string` | No | Additional CSS classes for the container |
 
 ## Customization

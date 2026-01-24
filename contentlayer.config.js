@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+	defineDocumentType,
+	defineNestedType,
+	makeSource,
+} from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -15,6 +19,22 @@ const computedFields = {
 		resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
 	},
 };
+
+const HeroImage = defineNestedType(() => ({
+	name: "HeroImage",
+	fields: {
+		src: {
+			type: "string",
+			required: true,
+		},
+		alt: {
+			type: "string",
+		},
+		caption: {
+			type: "string",
+		},
+	},
+}));
 
 export const Project = defineDocumentType(() => ({
 	name: "Project",
@@ -41,9 +61,7 @@ export const Project = defineDocumentType(() => ({
 		},
 		heroImages: {
 			type: "list",
-			of: {
-				type: "string",
-			},
+			of: HeroImage,
 		},
 		topics: {
 			type: "list",
@@ -63,6 +81,7 @@ export const Project = defineDocumentType(() => ({
 	},
 	computedFields,
 }));
+
 
 export const Page = defineDocumentType(() => ({
 	name: "Page",
