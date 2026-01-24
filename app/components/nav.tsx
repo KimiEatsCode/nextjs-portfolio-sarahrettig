@@ -47,7 +47,7 @@ export const Navigation: React.FC = () => {
 				}`}
 			>
 		
-	 		<div className="container flex items-center justify-between p-2 mx-auto">
+	 		<div className="container flex items-center justify-between py-4 mx-auto">
 					<div className="flex items-center gap-8">
 						<div className="hidden md:flex gap-8">
 							<Link
