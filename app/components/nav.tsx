@@ -46,8 +46,8 @@ export const Navigation: React.FC = () => {
 						: "bg-white  border-zinc-800 "
 				}`}
 			>
-				<div className="pt-8"></div>
-				<div className="container flex items-center justify-between p-6 mx-auto">
+		
+	 		<div className="container flex items-center justify-between p-2 mx-auto">
 					<div className="flex items-center gap-8">
 						<div className="hidden md:flex gap-8">
 							<Link
