@@ -26,7 +26,7 @@ export default function Home() {
     
       <div className="hidden w-screen h-px  md:block bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
     
-      <h1 className="py-3.5 px-3 z-10 text-2xl text-black cursor-default font-display sm:text-6xl md:text-2xl whitespace-nowrap">
+      <h1 className="py-3.5 px-3 z-10 text-2xl text-black cursor-default font-display sm:text-6xl md:text-4xl whitespace-nowrap">
       sarah kimi rettig
       </h1>
    
