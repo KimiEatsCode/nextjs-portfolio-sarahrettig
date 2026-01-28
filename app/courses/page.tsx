@@ -60,7 +60,7 @@ export default async function CoursesPage() {
             
             <SignInPrompt />
          
-            <p className="mt-3 py-5 text-sm text-black font-semibold underline">
+            <p className="mt-3 py-5 text-sm text-black font-semibold">
               Already have an account tied to another provider?{" "}
               </p>
               <p>

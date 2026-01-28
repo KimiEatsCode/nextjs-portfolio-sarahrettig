@@ -6,6 +6,7 @@ import { Card } from "../components/card";
 import { ProjectTopics } from "@/app/components/project-topics";
 import { Article } from "./article";
 import { ProjectFilter } from "./project-filter";
+import { Footer } from "../components/footer";
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
@@ -111,6 +112,7 @@ export default async function ProjectsPage() {
 
         <ProjectFilter projects={sorted} topics={topics} />
       </div>
+      <Footer></Footer>
     </div>
   );
 }
