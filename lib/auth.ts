@@ -73,13 +73,17 @@ export const authOptions: NextAuthOptions = {
       }
 
       if (token.id && !token.expiresAt) {
-        const storedUser = await prisma.user.findUnique({
-          where: { id: token.id },
-          select: { expiresAt: true },
-        });
+        try {
+          const storedUser = await prisma.user.findUnique({
+            where: { id: token.id },
+            select: { expiresAt: true },
+          });
 
-        if (storedUser?.expiresAt) {
-          token.expiresAt = storedUser.expiresAt.toISOString();
+          if (storedUser?.expiresAt) {
+            token.expiresAt = storedUser.expiresAt.toISOString();
+          }
+        } catch (error) {
+          console.error("Unable to load user expiration", error);
         }
       }
 
@@ -102,11 +106,15 @@ export const authOptions: NextAuthOptions = {
       try {
         await linkAccountToUser(user.id, account);
         if (isNewUser) {
-          const expiresAt = new Date(Date.now() + ACCOUNT_EXPIRATION_MS);
-          await prisma.user.update({
-            where: { id: user.id },
-            data: { expiresAt },
-          });
+          try {
+            const expiresAt = new Date(Date.now() + ACCOUNT_EXPIRATION_MS);
+            await prisma.user.update({
+              where: { id: user.id },
+              data: { expiresAt },
+            });
+          } catch (expiresAtError) {
+            console.error("Failed to set account expiration (column may not exist yet)", expiresAtError);
+          }
         }
       } catch (error) {
         console.error("Failed to persist linked provider", error);
