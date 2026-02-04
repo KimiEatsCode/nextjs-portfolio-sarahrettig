@@ -47,6 +47,7 @@ const ACCOUNT_EXPIRATION_DAYS = 30;
 const ACCOUNT_EXPIRATION_MS = ACCOUNT_EXPIRATION_DAYS * 24 * 60 * 60 * 1000;
 
 export const authOptions: NextAuthOptions = {
+  debug: true, // Enable debug mode to see detailed errors
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
@@ -56,6 +57,13 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     }),
   ],
   session: {
