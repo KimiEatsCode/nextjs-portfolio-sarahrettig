@@ -8,15 +8,22 @@ export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
   const userLabel =
     session?.user?.name ?? session?.user?.email ?? "your account";
+  const expiresAt = session?.user?.expiresAt
+    ? new Date(session.user.expiresAt)
+    : null;
+  const millisecondsInDay = 1000 * 60 * 60 * 24;
+  const rawDaysLeft =
+    expiresAt != null
+      ? Math.ceil((expiresAt.getTime() - Date.now()) / millisecondsInDay)
+      : null;
+  const daysLeft = rawDaysLeft != null ? Math.max(0, rawDaysLeft) : null;
 
   return (
     <div className="relative min-h-screen pb-16 bg-white">
       <Navigation />
       <main className="px-6 pt-20 mx-auto max-w-3xl space-y-10 lg:px-8 md:pt-24">
         <div className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-zinc-400">
-            Profile
-          </p>
+       
           <h1 className="text-3xl font-semibold text-zinc-900">Your account</h1>
           <p className="text-sm text-zinc-500">
             View the profile details you provided and manage linked projects or
@@ -35,6 +42,11 @@ export default async function ProfilePage() {
               </p>
               {session.user.email && (
                 <p className="mt-1 text-sm text-zinc-500">{session.user.email}</p>
+              )}
+              {daysLeft != null && (
+                <p className="mt-3 text-sm text-red-600">
+                  Account expires in {daysLeft} day{daysLeft === 1 ? "" : "s"}.
+                </p>
               )}
             </section>
             <DeleteAccountPanel userLabel={userLabel} />

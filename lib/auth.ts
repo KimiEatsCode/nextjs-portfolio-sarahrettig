@@ -37,11 +37,14 @@ export function clearLinkedProviders(userId: string) {
 export async function linkAccountToUser(
   userId: string,
   account: Partial<AdapterAccount> & Pick<AdapterAccount, 'provider' | 'type' | 'providerAccountId'>,
-) {
+): Promise<void> {
   // The account is already created by NextAuth's PrismaAdapter
   // Just track the linked provider
   await addLinkedProvider(userId, account.provider);
 }
+
+const ACCOUNT_EXPIRATION_DAYS = 30;
+const ACCOUNT_EXPIRATION_MS = ACCOUNT_EXPIRATION_DAYS * 24 * 60 * 60 * 1000;
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -68,23 +71,43 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
       }
+
+      if (token.id && !token.expiresAt) {
+        const storedUser = await prisma.user.findUnique({
+          where: { id: token.id },
+          select: { expiresAt: true },
+        });
+
+        if (storedUser?.expiresAt) {
+          token.expiresAt = storedUser.expiresAt.toISOString();
+        }
+      }
+
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.expiresAt = token.expiresAt ?? null;
       }
       return session;
     },
   },
   events: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, isNewUser }) {
       if (!user?.id || !account?.provider) {
         return;
       }
 
       try {
         await linkAccountToUser(user.id, account);
+        if (isNewUser) {
+          const expiresAt = new Date(Date.now() + ACCOUNT_EXPIRATION_MS);
+          await prisma.user.update({
+            where: { id: user.id },
+            data: { expiresAt },
+          });
+        }
       } catch (error) {
         console.error("Failed to persist linked provider", error);
       }

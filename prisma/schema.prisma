@@ -49,6 +49,7 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  expiresAt     DateTime?
 
   accounts         Account[]
   sessions         Session[]

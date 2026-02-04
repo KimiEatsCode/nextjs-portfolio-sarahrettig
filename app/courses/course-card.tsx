@@ -14,7 +14,7 @@ export function CourseCard({ project, progress }: Props) {
   return (
      <Link
           href={`/projects/${project.slug}?from=courses`}>
-    <article className="overflow-hidden rounded-2xl border border-black bg-white p-6 shadow-lg shadow-black/30">
+    <article className="overflow-hidden rounded-2xl bg-gray-200 p-6">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-black">Project</p>

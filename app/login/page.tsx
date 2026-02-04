@@ -10,6 +10,16 @@ export default function LoginPage() {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
   const error = searchParams?.get("error");
+  const expiresAt = session?.user?.expiresAt
+    ? new Date(session.user.expiresAt)
+    : null;
+  const millisecondsInDay = 1000 * 60 * 60 * 24;
+  const rawDaysLeft =
+    expiresAt != null
+      ? Math.ceil((expiresAt.getTime() - Date.now()) / millisecondsInDay)
+      : null;
+  const daysLeft = rawDaysLeft != null ? Math.max(0, rawDaysLeft) : null;
+  const showCreationMessage = daysLeft != null ? daysLeft >= 29 : false;
   // const callbackUrl = searchParams?.get("callbackUrl") ?? "/courses";
   const callbackUrl =
 		process.env.NODE_ENV === "development"
@@ -31,8 +41,18 @@ export default function LoginPage() {
             <Link className="underline" href="/courses">
               your favorites projects
             </Link>{" "}
-        
+            to continue exploring.
           </p>
+          {daysLeft != null && (
+            <p className="text-sm text-zinc-500">
+              Account expires in {daysLeft} day{daysLeft === 1 ? "" : "s"}.
+            </p>
+          )}
+          {showCreationMessage && (
+            <p className="text-sm font-semibold text-red-600">
+              Account will expire in 30 days.
+            </p>
+          )}
         </div>
       </div>
     );
