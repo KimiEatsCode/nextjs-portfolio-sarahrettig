@@ -68,6 +68,14 @@ export const Navigation: React.FC = () => {
 							>
 								Your Favorites
 							</Link>
+							{session && (
+								<Link
+									href="/profile"
+									className="duration-200 text-black hover:text-black"
+								>
+									Profile
+								</Link>
+							)}
 							<Link
 								href="/contact"
 								className="duration-200 text-black hover:text-black"
@@ -130,6 +138,15 @@ export const Navigation: React.FC = () => {
 						>
 							Contact Me
 						</Link>
+						{session && (
+							<Link
+								href="/profile"
+								onClick={() => setIsMenuOpen(false)}
+								className="text-xl font-semibold uppercase tracking-wide"
+							>
+								Profile
+							</Link>
+						)}
 						{session ? (
 							<button
 								onClick={() => {
