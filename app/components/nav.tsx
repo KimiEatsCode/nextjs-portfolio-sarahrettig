@@ -2,30 +2,12 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { data: session } = useSession();
-
-	const callbackUrl =
-		process.env.NODE_ENV === "development"
-			? "http://localhost:3000/courses"
-			: "/courses";
-
-	const providers = [
-		{
-			id: "github",
-			label: "Login with GitHub",
-		},
-		{
-			id: "google",
-			label: "Login with Gmail",
-		},
-	];
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -68,14 +50,6 @@ export const Navigation: React.FC = () => {
 							>
 								Your Favorites
 							</Link>
-							{session && (
-								<Link
-									href="/profile"
-									className="duration-200 text-black hover:text-black"
-								>
-									Profile
-								</Link>
-							)}
 							<Link
 								href="/contact"
 								className="duration-200 text-black hover:text-black"
@@ -94,21 +68,6 @@ export const Navigation: React.FC = () => {
 					</div>
 
 					<div className="flex items-center gap-4">
-						{session ? (
-							<button
-								onClick={() => signOut()}
-								className="text-sm text-black hover:text-black"
-							>
-								Sign out
-							</button>
-						) : (
-							<Link
-								href="/login"
-								className="flex w-full items-center justify-center rounded-full border border-black bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-							>
-								Login
-							</Link>
-						)}
 					</div>
 				</div>
 
@@ -138,34 +97,6 @@ export const Navigation: React.FC = () => {
 						>
 							Contact Me
 						</Link>
-						{session && (
-							<Link
-								href="/profile"
-								onClick={() => setIsMenuOpen(false)}
-								className="text-xl font-semibold uppercase tracking-wide"
-							>
-								Profile
-							</Link>
-						)}
-						{session ? (
-							<button
-								onClick={() => {
-									setIsMenuOpen(false);
-									signOut();
-								}}
-								className="text-sm font-semibold uppercase tracking-wide"
-							>
-								Sign out
-							</button>
-						) : (
-							<Link
-								href="/login"
-								onClick={() => setIsMenuOpen(false)}
-								className="text-sm px-6 py-3 rounded-full border border-black bg-white text-black font-semibold uppercase tracking-wide"
-							>
-								Login
-							</Link>
-						)}
 					</div>
 				)}
 			</div>
