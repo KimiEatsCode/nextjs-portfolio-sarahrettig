@@ -9,7 +9,7 @@ type Props = {
 
 export const Article: React.FC<Props> = ({ project }) => {
 	const firstImage = project.heroImages?.[0];
-	const imageSrc = firstImage?.src || "https://placehold.co/600x400/e5e5e5/666666?text=Project+Image";
+	const imageSrc = firstImage?.src || "./public/images/placeholder.png";
 
 	return (
 		<Link href={`/projects/${project.slug}`}>
