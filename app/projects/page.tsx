@@ -43,7 +43,6 @@ export default async function ProjectsPage() {
   
   const sorted = allProjects
     .filter((p) => p.published)
-    .filter((project) => project.slug !== featured?.slug)
     .sort((a, b) =>
       a.title.localeCompare(b.title, undefined, { sensitivity: "base" }),
     );
