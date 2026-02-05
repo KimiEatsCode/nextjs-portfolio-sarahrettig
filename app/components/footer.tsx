@@ -26,14 +26,6 @@ return (
             </div>
             <div className="flex-row">
             <Link
-                href="/courses"
-                className="duration-200 text-black hover:text-black"
-            >
-                Your Favorites
-            </Link>
-            </div>
-            <div className="flex-row">
-            <Link
                 href="/contact"
                 className="duration-200 text-black hover:text-black"
             >

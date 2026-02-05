@@ -45,12 +45,6 @@ export const Navigation: React.FC = () => {
 								Resume
 							</Link>
 							<Link
-								href="/courses"
-								className="duration-200 text-black hover:text-black"
-							>
-								Your Favorites
-							</Link>
-							<Link
 								href="/contact"
 								className="duration-200 text-black hover:text-black"
 							>
@@ -82,13 +76,6 @@ export const Navigation: React.FC = () => {
 							className="text-xl font-semibold uppercase tracking-wide"
 						>
 							Projects
-						</Link>
-						<Link
-							href="/courses"
-							onClick={() => setIsMenuOpen(false)}
-							className="text-xl font-semibold uppercase tracking-wide"
-						>
-							Favorites
 						</Link>
 						<Link
 							href="/contact"

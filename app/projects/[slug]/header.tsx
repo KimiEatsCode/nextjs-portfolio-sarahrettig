@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { ProjectTopics } from "@/app/components/project-topics";
 import Image from "next/image";
 import { ImageSlider } from "../../components/image-slider";
@@ -28,9 +27,6 @@ type Props = {
 export const Header: React.FC<Props> = ({ project }) => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
-	const searchParams = useSearchParams();
-	const fromCourses = searchParams?.get("from") === "courses";
-	const backLink = fromCourses ? "/courses" : "/projects";
 
 	const links: { label: string; href: string }[] = [];
 	if (project.repository) {
