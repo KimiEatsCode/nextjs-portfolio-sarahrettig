@@ -65,7 +65,7 @@ export default async function ProjectsPage() {
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
+          <h2 className="text-3xl font-bold text-center text-black sm:text-4xl">
             Projects
           </h2>
           <p className="mt-4 text-black">
