@@ -68,7 +68,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 						<button
 							type="button"
 							onClick={goToNext}
-							className="pointer-events-auto bg-black/80 hover:bg-black text-white rounded-full p-4 shadow-xl transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+							className="pointer-events-auto bg-black/80 hover:bg-black text-white rounded-full p-2 shadow-xl transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
 							aria-label="Next Image"
 						>
 							<svg 
