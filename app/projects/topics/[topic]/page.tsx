@@ -74,21 +74,16 @@ export default async function TopicPage({ params }: Props) {
   );
 
   return (
-    <div className="relative pb-16">
+    <div className="relative pb-16 justify-items-end text-end">
       <Navigation />
-      <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-12 lg:pt-12">
+      <div className="px-6 pt-24 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-20 md:pt-20 lg:pt-12">
         <div className="max-w-2xl mx-auto lg:mx-0">
-          <Link
-            href="/projects"
-            className="text-sm text-black hover:text-black transition-colors duration-200"
-          >
-            &larr; Back to all projects
-          </Link>
+      
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-black sm:text-4xl">
             Projects tagged with{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-400">
+            
               "{displayTopic}"
-            </span>
+          
           </h2>
           <p className="mt-4 text-black">
             Found {filteredProjects.length} project{filteredProjects.length === 1 ? "" : "s"} with this tag.

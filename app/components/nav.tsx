@@ -22,53 +22,39 @@ export const Navigation: React.FC = () => {
 	return (
 		<header ref={ref}>
 			<div
-				className={`fixed inset-x-0 bottom-0 z-50 duration-200 border-t  ${
-					isIntersecting
-						? "bg-white border-transparent"
-						: "bg-white  border-zinc-800 "
-				}`}
+				className={`flex justify-end text-end px-4 ${
+					isIntersecting ? "bg-white  border-zinc-800  justify-end" : "bg-white border-zinc-800 justify-end"
+				} flex justify-end px-4 py-4`}
 			>
-		
-	 		<div className="container flex items-center justify-between px-4 py-4 mx-auto">
-					<div className="flex items-center gap-8">
-						<div className="hidden md:flex gap-8">
-							<Link
-								href="/projects"
-								className="duration-200 text-black hover:text-black"
-							>
-								Projects
-							</Link>
-								<Link
-								href="https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing"
-								className="duration-200 text-black hover:text-black"
-							>
-								Resume
-							</Link>
-							<Link
-								href="/contact"
-								className="duration-200 text-black hover:text-black"
-							>
-								Contact Me
-							</Link>
-						</div>
-						<button
-							className="md:hidden flex w-full items-center justify-center px-4 border border-black bg-white py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-							aria-controls="primary-navigation"
-							aria-expanded={isMenuOpen}
-							onClick={() => setIsMenuOpen((prev) => !prev)}
+				<div className="flex items-center gap-8 justify-end">
+					<div className="hidden md:flex gap-8">
+						<Link href="/projects" className="text-black hover:text-black">
+							Projects
+						</Link>
+						<Link
+							href="https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing"
+							className="text-black hover:text-black"
 						>
-							{isMenuOpen ? "Close" : "Menu"}
-						</button>
+							Resume
+						</Link>
+						<Link href="/contact" className="text-black hover:text-black">
+							Contact Me
+						</Link>
 					</div>
-
-					<div className="flex items-center gap-4">
-					</div>
+					<button
+						className="md:hidden flex w-full items-center justify-center px-4 border border-black bg-white py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+						aria-controls="primary-navigation"
+						aria-expanded={isMenuOpen}
+						onClick={() => setIsMenuOpen((prev) => !prev)}
+					>
+						{isMenuOpen ? "Close" : "Menu"}
+					</button>
 				</div>
 
 				{isMenuOpen && (
 					<div
 						id="primary-navigation"
-						className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-zinc-900/95 text-white md:hidden"
+						className="flex flex-col items-center justify-center gap-8 bg-zinc-900/95 text-white md:hidden"
 					>
 						<Link
 							href="/projects"

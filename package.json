@@ -6,7 +6,9 @@
     "postinstall": "prisma generate",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && next start",
+    "watch-css": "tailwindcss build -i ./global.css -o ./global.css --watch",
+    "build-css": "tailwindcss build -i ./global.css -o ./global.css && npm start",
     "fmt": "pnpm rome check . --apply-unsafe && pnpm rome format . --write"
   },
   "dependencies": {
