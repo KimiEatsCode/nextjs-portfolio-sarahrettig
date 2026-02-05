@@ -43,7 +43,7 @@ export default async function PostPage({ params }: Props) {
     .slice(0, 3);
 
   return (
-    <div className="bg-zinc-50 min-h-screen pb-32 mb-8">
+    <div className="bg-zinc-50 min-h-screen mb-8">
       <Navigation />
       
       <Header project={project} />
@@ -53,8 +53,8 @@ export default async function PostPage({ params }: Props) {
       </article>
       
       {relatedProjects.length > 0 && (
-        <section className="px-6 py-12 pb-32 mt-12 border-t border-zinc-200">
-          <div className="mx-auto max-w-7xl">
+        <section className="px-6 py-12 pb-15 mt-12 border-t border-zinc-200">
+          <div className="mx-auto">
             <h2 className="text-2xl font-bold text-black mb-8">Related Projects</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {relatedProjects.map((relatedProject) => (

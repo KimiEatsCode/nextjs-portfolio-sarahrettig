@@ -23,10 +23,10 @@ export const Navigation: React.FC = () => {
 		<header ref={ref}>
 			<div
 				className={`flex justify-end text-end px-4 ${
-					isIntersecting ? "bg-white  border-zinc-800  justify-end" : "bg-white border-zinc-800 justify-end"
+					isIntersecting ? "bg-transparent  border-zinc-800  justify-end" : "bg-transparent border-zinc-800 justify-end"
 				} flex justify-end px-4 py-4`}
 			>
-				<div className="flex items-center gap-8 justify-end">
+				<div className="flex items-center gap-8 justify-end px-4">
 					<div className="hidden md:flex gap-8">
 						<Link href="/projects" className="text-black hover:text-black">
 							Projects
@@ -42,7 +42,7 @@ export const Navigation: React.FC = () => {
 						</Link>
 					</div>
 					<button
-						className="md:hidden flex w-full items-center justify-center px-4 border border-black bg-white py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+						className="md:hidden flex w-full rounded-md items-center justify-center px-4 border border-black bg-white py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 						aria-controls="primary-navigation"
 						aria-expanded={isMenuOpen}
 						onClick={() => setIsMenuOpen((prev) => !prev)}
