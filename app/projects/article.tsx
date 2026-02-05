@@ -1,5 +1,6 @@
 import type { Project } from "@/.contentlayer/generated";
 import Link from "next/link";
+import Image from "next/image";
 import { ProjectTopics } from "@/app/components/project-topics";
 
 type Props = {
@@ -7,9 +8,21 @@ type Props = {
 };
 
 export const Article: React.FC<Props> = ({ project }) => {
+	const firstImage = project.heroImages?.[0];
+	const imageSrc = firstImage?.src || "https://placehold.co/600x400/e5e5e5/666666?text=Project+Image";
+
 	return (
 		<Link href={`/projects/${project.slug}`}>
 			<article className="p-4 md:p-8">
+				<div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg bg-gray-100">
+					<Image
+						src={imageSrc}
+						alt={firstImage?.alt || project.title}
+						fill
+						className="object-cover transition-transform duration-300 group-hover:scale-105"
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+					/>
+				</div>
 				<div className="flex justify-between gap-2 items-center">
 					<span className="text-xs duration-1000 text-black group-hover:text-black group-hover:border-black drop-shadow-orange">
 						{project.date ? (
