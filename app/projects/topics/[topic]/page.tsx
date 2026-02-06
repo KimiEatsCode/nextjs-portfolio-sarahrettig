@@ -74,7 +74,7 @@ export default async function TopicPage({ params }: Props) {
   );
 
   return (
-    <div className="relative pb-16 justify-items-end text-end">
+    <div className="relative pb-16">
       <Navigation />
       <div className="px-6 pt-24 mx-auto space-y-8 lg:px-8 md:space-y-20 md:pt-20 lg:pt-12">
         <div className="max-w-2xl mx-auto lg:mx-0">
@@ -89,7 +89,7 @@ export default async function TopicPage({ params }: Props) {
             Found {filteredProjects.length} project{filteredProjects.length === 1 ? "" : "s"} with this tag.
           </p>
         </div>
-        <div className="w-full h-px bg-zinc-800" />
+        <div className="w-full bg-zinc-800" />
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {columns.map((columnProjects, columnIndex) => (
