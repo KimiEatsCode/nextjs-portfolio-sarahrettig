@@ -79,12 +79,10 @@ export default async function TopicPage({ params }: Props) {
       <div className="px-6 pt-24 mx-auto space-y-8 lg:px-8 md:space-y-20 md:pt-20 lg:pt-12">
         <div className="max-w-2xl mx-auto lg:mx-0">
       
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-black sm:text-4xl">
-            Projects tagged with{" "}
-            
-              "{displayTopic}"
-          
-          </h2>
+          <h3 className="mt-4 text-3xl font-bold tracking-tight text-black sm:text-4xl">
+            Projects tagged with "{displayTopic}"   
+        
+          </h3>
           <p className="mt-4 text-black">
             Found {filteredProjects.length} project{filteredProjects.length === 1 ? "" : "s"} with this tag.
           </p>
