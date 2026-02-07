@@ -75,7 +75,7 @@ export const Header: React.FC<Props> = ({ project }) => {
 						
 			<div className="container mx-auto relative isolate overflow-hidden sm:py-10">
 				<div className="mx-auto px-6 lg:px-8 text-center flex flex-col items-center">
-					<div className="mx-auto lg:mx-0">
+					<div className="mx-auto lg:mx-0 mt-10">
 						{(project.jobTitle || project.companyName) && (
 							<div className="mt-4 text-base text-zinc-600">
 								{project.jobTitle && <span className="font-semibold">{project.jobTitle}</span>}
