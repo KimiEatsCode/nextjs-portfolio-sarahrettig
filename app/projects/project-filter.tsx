@@ -52,7 +52,7 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 							))}
 						</select>
 					</div>
-					<div className="space-y-1">
+					{/* <div className="space-y-1">
 						<p className="text-sm font-semibold  text-black">Filter by tool</p>
 						<select
 							className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
@@ -66,7 +66,7 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 								</option>
 							))}
 						</select>
-					</div>
+					</div> */}
 				</div>
 				<p className="text-sm sm:mt-10 text-black md:text-right">
 					Displaying {filteredProjects.length} project
