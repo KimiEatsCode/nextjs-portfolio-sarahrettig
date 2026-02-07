@@ -85,6 +85,12 @@ export const Project = defineDocumentType(() => ({
 				type: "string",
 			},
 		},
+		tools: {
+			type: "list",
+			of: {
+				type: "string",
+			},
+		},
 		date: {
 			type: "date",
 		},

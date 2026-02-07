@@ -59,6 +59,18 @@ export default async function ProjectsPage() {
     .map(([value, label]) => ({ value, label }))
     .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
 
+  const tools = Array.from(
+    new Map(
+      allProjects
+        .flatMap((project) => project.tools ?? [])
+        .map((tool) => tool.trim())
+        .filter(Boolean)
+        .map((tool) => [normalizeTopic(tool), tool] as const),
+    ).entries(),
+  )
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
+
   return (
     <div className="relative pb-16">
       <Navigation />
@@ -120,7 +132,7 @@ export default async function ProjectsPage() {
         )} */}
         {/* <div className="hidden w-full h-px md:block bg-zinc-800" /> */}
 
-        <ProjectFilter projects={sorted} topics={topics} />
+        <ProjectFilter projects={sorted} topics={topics} tools={tools} />
       </div>
       {/* <Footer></Footer> */}
     </div>
