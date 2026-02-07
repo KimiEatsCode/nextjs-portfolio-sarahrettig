@@ -54,19 +54,21 @@ export const Navigation: React.FC = () => {
 				{isMenuOpen && (
 					<div
 						id="primary-navigation"
-						className="flex flex-col items-center justify-center gap-8 bg-zinc-900/95 text-white md:hidden"
+						className="md:hidden mt-3 w-full flex flex-col gap-3 rounded-md border border-black bg-transparent px-4 py-3 text-black shadow-sm"
+						aria-live="polite"
 					>
 						<Link
 							href="/projects"
 							onClick={() => setIsMenuOpen(false)}
-							className="text-xl font-semibold uppercase tracking-wide"
+							className="w-full rounded-sm px-2 py-2 text-left text-lg font-semibold uppercase tracking-wide hover:underline"
 						>
 							Projects
 						</Link>
+						<div className="h-px w-full bg-black/30" />
 						<Link
 							href="/contact"
 							onClick={() => setIsMenuOpen(false)}
-							className="text-xl font-semibold uppercase tracking-wide"
+							className="w-full rounded-sm px-2 py-2 text-left text-lg font-semibold uppercase tracking-wide hover:underline"
 						>
 							Contact Me
 						</Link>
