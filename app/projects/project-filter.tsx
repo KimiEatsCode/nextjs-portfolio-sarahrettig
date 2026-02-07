@@ -56,7 +56,7 @@ export function ProjectFilter({ projects, topics }: Props) {
 					No projects match that topic yet. Try another tag.
 				</p>
 			) : (
-				<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-3 items-start">
 					{filteredProjects.map((project) => (
 								<Card key={project.slug}>
 									<Article project={project} />

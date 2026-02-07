@@ -29,8 +29,13 @@ export default function Example() {
 	return (
 		<div className="bg-white">
 			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
+			<div className="mx-auto text-center sm:mt-10">
+          <h2 className="text-3xl font-bold text-center mt-10 text-black sm:text-4xl">
+            Contact Me
+          </h2>
+         </div>
+			<div className="container flex items-start justify-center min-h-screen px-4 mb-10 mx-auto">
+				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-10 mb-20 sm:mt-0 sm:grid-cols-3 lg:gap-16">
 					{socials.map((s) => (
 						<Card>
 							<Link

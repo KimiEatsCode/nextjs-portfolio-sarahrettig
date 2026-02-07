@@ -64,6 +64,13 @@ export const Navigation: React.FC = () => {
 						>
 							Projects
 						</Link>
+						<Link
+							href="https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing"
+							onClick={() => setIsMenuOpen(false)}
+							className="w-full rounded-sm px-2 py-2 text-left text-lg font-semibold uppercase tracking-wide hover:underline"
+						>
+							Resume
+						</Link>
 						<div className="h-px w-full bg-black/30" />
 						<Link
 							href="/contact"

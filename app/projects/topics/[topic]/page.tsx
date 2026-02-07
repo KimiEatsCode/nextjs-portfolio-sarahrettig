@@ -79,7 +79,7 @@ export default async function TopicPage({ params }: Props) {
       <div className="px-6 pt-24 mx-auto space-y-8 lg:px-8 md:space-y-20 md:pt-20 lg:pt-12">
         <div className="max-w-2xl mx-auto lg:mx-0">
       
-          <h3 className="mt-4 font-bold tracking-tight text-black sm:text-4xl">
+          <h3 className="mt-4 font-bold tracking-tight text-black">
             Projects tagged with "{displayTopic}"   
         
           </h3>
@@ -89,7 +89,7 @@ export default async function TopicPage({ params }: Props) {
         </div>
         <div className="w-full bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 items-start">
           {columns.map((columnProjects, columnIndex) => (
             <div key={columnIndex} className="grid grid-cols-1 gap-4">
               {columnProjects.map((project) => (
