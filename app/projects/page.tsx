@@ -74,8 +74,8 @@ export default async function ProjectsPage() {
   return (
     <div className="relative pb-16">
       <Navigation />
-      <div className="px-6 mx-auto space-y-8 lg:px-8 sm:mt-10 md:pt-20 lg:pt-20">
-        <div className="mx-auto text-center mt-10">
+      <div className="px-6 mx-auto space-y-8 lg:px-8 sm:mt-10 md:pt-16 lg:pt-16">
+        <div className="mx-auto text-center">
           <h2 className="text-3xl font-bold text-center text-black sm:text-4xl">
             Projects
           </h2>

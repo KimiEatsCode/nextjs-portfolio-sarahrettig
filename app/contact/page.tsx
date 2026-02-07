@@ -30,7 +30,7 @@ export default function Example() {
 		<div className="bg-white">
 			<Navigation />
 			<div className="mx-auto text-center sm:mt-10">
-          <h2 className="text-3xl font-bold text-center mt-10 text-black sm:text-4xl">
+          <h2 className="text-3xl font-bold text-center mt-10 mb-10 text-black sm:text-4xl">
             Contact Me
           </h2>
          </div>
