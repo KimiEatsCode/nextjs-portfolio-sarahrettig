@@ -12,9 +12,15 @@ type HeroImage = {
 	caption?: string;
 };
 
+type ProjectLink = {
+	src: string;
+	label?: string;
+	alt?: string;
+};
+
 type Props = {
 	project: {
-		url?: string;
+		url?: ProjectLink[];
 		title: string;
 		description: string;
 		repository?: string;
@@ -28,19 +34,21 @@ export const Header: React.FC<Props> = ({ project }) => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
 
-	const links: { label: string; href: string }[] = [];
+	const links: { label: string; href: string; alt?: string }[] = [];
 	if (project.repository) {
 		links.push({
 			label: "GitHub",
 			href: `https://github.com/${project.repository}`,
 		});
 	}
-	if (project.url) {
+	project.url?.forEach((projectLink) => {
+		if (!projectLink?.src) return;
 		links.push({
-			label: "Website",
-			href: project.url,
+			label: projectLink.label || "Website",
+			href: projectLink.src,
+			alt: projectLink.alt,
 		});
-	}
+	});
 	useEffect(() => {
 		if (!ref.current) return;
 		const observer = new IntersectionObserver(([entry]) =>
@@ -89,12 +97,13 @@ export const Header: React.FC<Props> = ({ project }) => {
 						<ProjectTopics topics={project.topics} className="mt-6 justify-center gap-3" />
 					</div>
 					
-					<div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+					<div className="mx-auto mt-10 mb-10 max-w-2xl lg:mx-0 lg:max-w-none">
 						<div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-black sm:grid-cols-2 md:flex lg:gap-x-10">
 							{links.map((link) => (
-								<Link target="_blank" key={link.label} href={link.href}>
-									{link.label} <span aria-hidden="true">&rarr;</span>
-								</Link>
+								<div><h3>Project Links: <Link target="_blank" key={`${link.label}-${link.href}`} href={link.href} aria-label={link.alt || link.label}>
+									{link.label} <span aria-hidden="true">{link.href}</span>
+								</Link></h3>
+							    </div>
 							))}
 						</div>
 					</div>

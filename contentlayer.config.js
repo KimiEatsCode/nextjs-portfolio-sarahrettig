@@ -36,6 +36,22 @@ const HeroImage = defineNestedType(() => ({
 	},
 }));
 
+const ProjectLink = defineNestedType(() => ({
+	name: "ProjectLink",
+	fields: {
+		src: {
+			type: "string",
+			required: true,
+		},
+		label: {
+			type: "string",
+		},
+		alt: {
+			type: "string",
+		},
+	},
+}));
+
 export const Project = defineDocumentType(() => ({
 	name: "Project",
 	filePathPattern: "./projects/**/*.mdx",
@@ -73,7 +89,8 @@ export const Project = defineDocumentType(() => ({
 			type: "date",
 		},
 		url: {
-			type: "string",
+			type: "list",
+			of: ProjectLink,
 		},
 		repository: {
 			type: "string",
