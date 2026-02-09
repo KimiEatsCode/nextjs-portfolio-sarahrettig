@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import { RESUME_URL } from "./constants";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
-   { name: "Resume", 	href: "https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing" },
+  { name: "Resume", href: RESUME_URL },
   { name: "Contact", href: "/contact" },
 ];
 

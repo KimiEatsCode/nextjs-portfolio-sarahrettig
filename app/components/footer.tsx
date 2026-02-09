@@ -1,5 +1,6 @@
 "use client"
-import Link from "next/link"; 
+import Link from "next/link";
+import { RESUME_URL } from "../constants";
 
 
 export const Footer: React.FC = () => {
@@ -18,7 +19,7 @@ return (
             </div>
             <div className="flex-row">
                 <Link
-                href="https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing"
+                href={RESUME_URL}
                 className="duration-200 text-black hover:text-black"
             >
                 Resume

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { RESUME_URL } from "../constants";
 
 
 export const Navigation: React.FC = () => {
@@ -32,7 +33,7 @@ export const Navigation: React.FC = () => {
 							Projects
 						</Link>
 						<Link
-							href="https://drive.google.com/file/d/1ciS0_BLVzV3XoPgdwl5MO4eIXh9_me0d/view?usp=sharing"
+							href={RESUME_URL}
 							className="text-black hover:text-black"
 						>
 							Resume
@@ -65,7 +66,7 @@ export const Navigation: React.FC = () => {
 							Projects
 						</Link>
 						<Link
-							href="https://drive.google.com/file/d/1IK1YeF-_n5kox6XS6aLQBrBQeu2HqwhU/view?usp=sharing"
+							href={RESUME_URL}
 							onClick={() => setIsMenuOpen(false)}
 							className="w-full rounded-sm px-2 py-2 text-left text-lg font-semibold uppercase tracking-wide hover:underline"
 						>
