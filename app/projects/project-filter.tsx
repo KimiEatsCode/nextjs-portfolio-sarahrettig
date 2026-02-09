@@ -36,7 +36,7 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 	return (
 		<section className="md:space-y-10 md:pt-10">
 			<div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-				<div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+				<div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-10">
 					<div className="space-y-1">
 						<p className="text-sm font-semibold text-black">Filter by tag</p>
 						<select
@@ -68,7 +68,7 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 						</select>
 					</div> */}
 				</div>
-				<p className="text-sm sm:mt-10 text-black md:text-right">
+				<p className="text-md sm:mt-10 text-black md:text-right">
 					Displaying {filteredProjects.length} project
 					{filteredProjects.length === 1 ? "" : "s"}
 				</p>
@@ -79,7 +79,7 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 					No projects match those filters. Try adjusting your selections.
 				</p>
 			) : (
-				<div className="grid grid-cols-1 gap-4 md:grid-cols-3 items-start">
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-3 items-start mt-4">
 					{filteredProjects.map((project) => (
 								<Card key={project.slug}>
 									<Article project={project} />
