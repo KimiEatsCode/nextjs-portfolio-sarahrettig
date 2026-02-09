@@ -36,5 +36,10 @@ header {
   background-color: #424242 !important;
 }
 
+/* This is a custom CSS class for grid layout of the projects to lower top margin */
+.grid.grid-cols-1.gap-4.md\:grid-cols-3.items-start.custom-grid-layout{
+  margin-top:10px!important;
+  
+}
 } 
 
