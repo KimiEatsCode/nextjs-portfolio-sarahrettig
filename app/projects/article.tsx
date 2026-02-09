@@ -13,7 +13,7 @@ export const Article: React.FC<Props> = ({ project }) => {
 
 	return (
 		<Link href={`/projects/${project.slug}`}>
-			<article className="p-4 md:p-8">
+			<article className="p-4 md:p-6">
 				<div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg bg-gray-100">
 					<Image
 						src={imageSrc}
@@ -22,7 +22,7 @@ export const Article: React.FC<Props> = ({ project }) => {
 						className="object-cover transition-transform duration-300 group-hover:scale-105"
 						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
 					/>
-				</div>
+				</div>test
 				<div className="flex justify-between gap-2 items-center">
 					<span className="text-xs duration-1000 text-black group-hover:text-black group-hover:border-black drop-shadow-orange">
 						{project.date ? (

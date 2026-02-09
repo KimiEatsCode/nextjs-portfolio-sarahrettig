@@ -46,7 +46,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 			aria-label="Image gallery slider"
 		>
 			{/* Images Container with Controls */}
-			<div className="relative w-full overflow-hidden rounded-lg shadow-2xl bg-zinc-100">
+			<div className="relative w-full overflow-hidden rounded-lg pb-6 shadow-2xl bg-zinc-100">
 				<div className="relative w-full aspect-[16/9] min-h-[400px]">
 					{/* Next/Prev Controls */}
 					<div className="absolute inset-0 z-20 flex items-center justify-between px-4 pointer-events-none">
@@ -98,9 +98,9 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 								<Image
 									src={image.src}
 									alt={image.alt}
-									width={1600}
-									height={900}
-									className="w-full h-full object-contain"
+									width={1400}
+									height={750}
+									className="w-full h-full object-cover"
 									priority={index === 0}
 									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 								/>
@@ -128,7 +128,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 			</div>
 
 			{/* Dot Navigation */}
-			<div className="mt-8 flex justify-center">
+			{/* <div className="mt-8 mb-10 flex justify-center">
 				<ol role="list" className="flex gap-4">
 					{images.map((image, index) => (
 						<li key={index}>
@@ -146,7 +146,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 						</li>
 					))}
 				</ol>
-			</div>
+			</div> */}
 		</section>
 	);
 };

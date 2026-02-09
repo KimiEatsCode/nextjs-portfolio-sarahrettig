@@ -48,14 +48,14 @@ export default async function PostPage({ params }: Props) {
       
       <Header project={project} />
 
-      <article className="px-4 mx-auto text-center prose prose-zinc prose-quoteless">
+      <article className="px-4 pb-4 mt-10 mx-auto text-center prose prose-zinc prose-quoteless">
         <Mdx code={project.body.code} />
       </article>
       
       {relatedProjects.length > 0 && (
         <section className="px-6 py-12 pb-15 mt-12 border-t border-zinc-200">
           <div className="mx-auto">
-            <h2 className="text-2xl font-bold text-black mb-8">Related Projects</h2>
+            <h2 className="text-2xl text-center font-bold text-black mb-8">Related Projects</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {relatedProjects.map((relatedProject) => (
                 <Card key={relatedProject.slug}>

@@ -87,7 +87,7 @@ export const Header: React.FC<Props> = ({ project }) => {
 								</p>
 							</div>
 						)}	
-						<h1 className="text-4xl mt-4 font-bold tracking-tight text-black sm:text-6xl font-display">
+						<h1 className="text-6xl mt-4 font-bold tracking-tight text-black sm:text-4xl font-display">
 							{project.title}
 						</h1>
 						
@@ -97,7 +97,7 @@ export const Header: React.FC<Props> = ({ project }) => {
 						<ProjectTopics topics={project.topics} className="mt-6 justify-center gap-3" />
 					</div>
 					
-					<div className="mx-auto mt-10 mb-10 max-w-2xl lg:mx-0 lg:max-w-none">
+					<div className="mx-auto mt-5 mb-5 max-w-2xl lg:mx-0 lg:max-w-none">
 						<div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-black sm:grid-cols-2 md:flex lg:gap-x-10">
 							{links.map((link) => (
 								<div><h3>Project Links: <Link target="_blank" key={`${link.label}-${link.href}`} href={link.href} aria-label={link.alt || link.label}>

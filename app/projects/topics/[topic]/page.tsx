@@ -77,7 +77,7 @@ export default async function TopicPage({ params }: Props) {
     <div className="relative pb-16">
       <Navigation />
       <div className="px-6 pt-10 mx-auto space-y-8 lg:px-8 md:space-y-20 md:pt-20 lg:pt-12">
-        <div className="max-w-2xl mx-auto lg:mx-0">
+        <div className="mx-auto lg:mx-0">
       
           <div className="text-3xl mt-4 font-bold tracking-tight text-black">
             Projects tagged with "{displayTopic}"   
