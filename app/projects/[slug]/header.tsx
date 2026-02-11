@@ -18,9 +18,16 @@ type ProjectLink = {
 	alt?: string;
 };
 
+type ProjectLink2 = {
+	src: string;
+	label?: string;
+	alt?: string;
+};
+
 type Props = {
 	project: {
 		url?: ProjectLink[];
+		url2?: ProjectLink2[];
 		title: string;
 		description: string;
 		repository?: string;
@@ -48,6 +55,15 @@ export const Header: React.FC<Props> = ({ project }) => {
 			href: projectLink.src,
 			alt: projectLink.alt,
 		});
+		
+	project.url2?.forEach((projectLink2) => {
+if (!projectLink?.src) return;
+links.push({
+	label: projectLink.label || "Website",
+	href: projectLink.src,
+	alt: projectLink.alt,
+});
+});
 	});
 	useEffect(() => {
 		if (!ref.current) return;
