@@ -55,13 +55,13 @@ export const Header: React.FC<Props> = ({ project }) => {
 			href: projectLink.src,
 			alt: projectLink.alt,
 		});
-		
+
 	project.url2?.forEach((projectLink2) => {
-if (!projectLink?.src) return;
+if (!projectLink2?.src) return;
 links.push({
-	label: projectLink.label || "Website",
-	href: projectLink.src,
-	alt: projectLink.alt,
+	label: projectLink2.label || "Website",
+	href: projectLink2.src,
+	alt: projectLink2.alt,
 });
 });
 	});
