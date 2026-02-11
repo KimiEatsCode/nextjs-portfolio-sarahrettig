@@ -52,6 +52,22 @@ const ProjectLink = defineNestedType(() => ({
 	},
 }));
 
+const ProjectLink2 = defineNestedType(() => ({
+	name: "ProjectLink",
+	fields: {
+		src: {
+			type: "string",
+			required: true,
+		},
+		label: {
+			type: "string",
+		},
+		alt: {
+			type: "string",
+		},
+	},
+}));
+
 export const Project = defineDocumentType(() => ({
 	name: "Project",
 	filePathPattern: "./projects/**/*.mdx",
@@ -97,6 +113,10 @@ export const Project = defineDocumentType(() => ({
 		url: {
 			type: "list",
 			of: ProjectLink,
+		},
+			url2: {
+			type: "list",
+			of: ProjectLink2,
 		},
 		repository: {
 			type: "string",
