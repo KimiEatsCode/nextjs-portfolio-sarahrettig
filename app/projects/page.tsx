@@ -81,60 +81,9 @@ export default async function ProjectsPage() {
           </h2>
     
         </div>
-
-        {/* {featured && (
-          <div className="grid grid-cols-1 gap-8 mx-auto xlg:grid-cols-8 ">
-            <Card>
-              <Link href={`/projects/${featured.slug}`}>
-                <article className="relative w-full h-full p-4 mb-4 md:p-2">
-                  {featured.heroImages?.[0] && (
-                    <div className="relative w-full h-64 md:h-80 mb-6 overflow-hidden rounded-lg">
-                      <Image
-                        src={featured.heroImages[0].src}
-                        alt={featured.heroImages[0].alt || featured.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                        priority
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="text-xs text-black">
-                      {featured.date ? (
-                        <time dateTime={new Date(featured.date).toISOString()}>
-                          {Intl.DateTimeFormat(undefined, {
-                            dateStyle: "medium",
-                          }).format(new Date(featured.date))}
-                        </time>
-                      ) : (
-                        <span>COMING SOON</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <h2
-                    id="featured-post"
-                    className="mt-4 text-3xl font-bold text-black group-hover:text-black sm:text-4xl font-display"
-                  >
-                    {featured.title}
-                  </h2>
-                  <p className="mt-4 leading-8 duration-150 text-black group-hover:text-black">
-                    {featured.description}
-                  </p>
-                  <ProjectTopics topics={featured.topics} className="mt-6" />
-                 
-                </article>
-              </Link>
-            </Card>
-
-          </div>
-        )} */}
-        {/* <div className="hidden w-full h-px md:block bg-zinc-800" /> */}
-
         <ProjectFilter projects={sorted} topics={topics} tools={tools} />
       </div>
-      {/* <Footer></Footer> */}
+      
     </div>
   );
 }

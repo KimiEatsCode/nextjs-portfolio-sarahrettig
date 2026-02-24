@@ -64,7 +64,7 @@ export default async function PostPage({ params }: Props) {
               src={featuredImage.src}
               alt={featuredImage.alt || project.title}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
               priority
             />
