@@ -103,7 +103,7 @@ links.push({
 								</p>
 							</div>
 						)}	
-						<h1 className="text-5xl mt-4 font-bold tracking-tight text-black sm:text-6xl font-display">
+						<h1 className="text-3xl mt-4 font-bold tracking-tight text-black sm:text-5xl font-display">
 							{project.title}
 						</h1>
 						
@@ -122,7 +122,7 @@ links.push({
 									rel="noopener noreferrer"
 									href={link.href}
 									aria-label={link.alt || link.label}
-									className="inline-flex items-center justify-center rounded-md border border-black px-4 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white"
+									className="inline-flex items-center justify-center min-w-[150px] rounded-md border border-black px-4 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white"
 								>
 									{link.label}
 								</Link>

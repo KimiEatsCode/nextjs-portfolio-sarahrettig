@@ -6,6 +6,7 @@ import { Header } from "./header";
 import "./mdx.css";
 import { Card } from "@/app/components/card";
 import Link from "next/link";
+import Image from "next/image";
 import { ProjectTopics } from "@/app/components/project-topics";
 
 export const revalidate = 60;
@@ -42,15 +43,35 @@ export default async function PostPage({ params }: Props) {
     )
     .slice(0, 3);
 
+  const featuredImage = project.heroImages?.find((img) =>
+    img.src.split("/").pop()?.toLowerCase().startsWith("featured")
+  );
+
   return (
     <div className="bg-zinc-50 min-h-screen mb-8">
       <Navigation />
       
       <Header project={project} />
-
+     
       <article className="px-4 pb-4 mt-10 mx-auto text-center prose prose-zinc prose-quoteless">
         <Mdx code={project.body.code} />
       </article>
+      
+      {featuredImage?.src && (
+        <div className="mx-auto max-w-4xl px-6 mt-10">
+          <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-gray-100">
+            <Image
+              src={featuredImage.src}
+              alt={featuredImage.alt || project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+              priority
+            />
+          </div>
+        </div>
+      )}
+
       
       {relatedProjects.length > 0 && (
         <section className="px-6 py-4 pb-4 mt-12 border-t border-zinc-200">
