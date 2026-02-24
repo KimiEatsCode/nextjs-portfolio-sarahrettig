@@ -103,23 +103,29 @@ links.push({
 								</p>
 							</div>
 						)}	
-						<h1 className="text-6xl mt-4 font-bold tracking-tight text-black sm:text-4xl font-display">
+						<h1 className="text-5xl mt-4 font-bold tracking-tight text-black sm:text-6xl font-display">
 							{project.title}
 						</h1>
 						
-						<p className="mt-6 text-lg text-center leading-8 text-black">
+						<p className="mt-6 text-mdtext-center leading-8 text-black">
 							{project.description}
 						</p>
-						<ProjectTopics topics={project.topics} className="mt-6 justify-center gap-3" />
+					
 					</div>
 					
 					<div className="mx-auto mt-5 mb-5 max-w-2xl lg:mx-0 lg:max-w-none">
-						<div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-black sm:grid-cols-2 md:flex lg:gap-x-10">
+						<div className="grid grid-cols-1 gap-y-4 gap-x-4 text-base font-semibold leading-7 text-black sm:grid-cols-2 md:flex lg:gap-x-6">
 							{links.map((link) => (
-								<div><h3>Project Links: <Link target="_blank" key={`${link.label}-${link.href}`} href={link.href} aria-label={link.alt || link.label}>
-									{link.label} <span aria-hidden="true">{link.href}</span>
-								</Link></h3>
-							    </div>
+								<Link
+									key={`${link.label}-${link.href}`}
+									target="_blank"
+									rel="noopener noreferrer"
+									href={link.href}
+									aria-label={link.alt || link.label}
+									className="inline-flex items-center justify-center rounded-md border border-black px-4 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white"
+								>
+									{link.label}
+								</Link>
 							))}
 						</div>
 					</div>
