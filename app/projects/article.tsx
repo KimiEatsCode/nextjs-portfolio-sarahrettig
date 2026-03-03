@@ -12,8 +12,8 @@ export const Article: React.FC<Props> = ({ project }) => {
 	const imageSrc = firstImage?.src || "/images/placeholder-image.png";
 
 	return (
-		<Link href={`/projects/${project.slug}`}>
-			<article className="p-4 md:p-6">
+		<Link href={`/projects/${project.slug}`} className="h-full">
+			<article className="p-4 md:p-6 flex flex-col h-full">
 				<div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg bg-gray-100">
 					<Image
 						src={imageSrc}
@@ -39,10 +39,10 @@ export const Article: React.FC<Props> = ({ project }) => {
 				<h2 className="z-20 text-xl font-medium duration-1000 lg:text-3xl text-black group-hover:text-black font-display">
 					{project.title}
 				</h2>
-				<p className="z-20 mt-4 text-sm  duration-1000 text-black group-hover:text-black">
-					{project.description}
-				</p>
-				<ProjectTopics topics={project.topics} className="mt-4" />
+			<p className="z-20 mt-4 text-sm duration-1000 text-black group-hover:text-black flex-1">
+				{project.description}
+			</p>
+			<ProjectTopics topics={project.topics} className="mt-4" />
 			</article>
 		</Link>
 	);
