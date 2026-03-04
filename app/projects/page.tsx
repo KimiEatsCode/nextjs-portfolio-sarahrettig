@@ -8,6 +8,7 @@ import { ProjectTopics } from "@/app/components/project-topics";
 import { Article } from "./article";
 import { ProjectFilter } from "./project-filter";
 import { Footer } from "../components/footer";
+import { FeaturedProjectSlider } from "../components/featured-project-slider";
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
@@ -41,6 +42,16 @@ export default async function ProjectsPage() {
         new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
     )[0];
   
+  const featuredSliderProjects = featuredByTopic
+    .filter((p) => p.heroImages && p.heroImages.length > 0)
+    .map((p) => ({
+      title: p.title,
+      description: p.description,
+      slug: p.slug,
+      heroImageSrc: p.heroImages![0].src,
+      heroImageAlt: p.heroImages![0].alt ?? p.title,
+    }));
+
   const sorted = allProjects
     .filter((p) => p.published)
     .sort((a, b) =>
@@ -71,17 +82,28 @@ export default async function ProjectsPage() {
     .map(([value, label]) => ({ value, label }))
     .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
 
+  const companies = Array.from(
+    new Set(
+      allProjects
+        .filter((p) => p.published)
+        .map((p) => p.companyName?.trim())
+        .filter(Boolean) as string[],
+    ),
+  ).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
+
   return (
     <div className="relative pb-16">
       <Navigation />
-      <div className="px-6 mx-auto space-y-8 lg:px-8 sm:mt-10 md:pt-10 lg:pt-10">
+      <div className="px-6 mx-auto space-y-8 lg:px-10 sm:mt-5 md:pt-5 lg:pt-5">
+        {featuredSliderProjects.length > 0 && (
+          <FeaturedProjectSlider projects={featuredSliderProjects} />
+        )}
         <div className="mx-auto text-center">
-          <h2 className="text-3xl font-bold text-center text-black sm:text-4xl">
+          <h2 className="text-3xl font-bold text-center text-black sm:text-4xl space-y-2 sm:mt-2 md:pt-8 lg:pt-82">
             Projects
           </h2>
-    
         </div>
-        <ProjectFilter projects={sorted} topics={topics} tools={tools} />
+        <ProjectFilter projects={sorted} topics={topics} tools={tools} companies={companies} />
       </div>
       
     </div>

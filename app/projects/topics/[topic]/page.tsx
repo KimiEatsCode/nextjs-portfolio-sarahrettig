@@ -87,8 +87,7 @@ export default async function TopicPage({ params }: Props) {
             Found {filteredProjects.length} project{filteredProjects.length === 1 ? "" : "s"} with this tag.
           </p>
         </div>
-        <div className="w-full bg-zinc-800" />
-
+    
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 items-start custom-grid-layout">
           {columns.map((columnProjects, columnIndex) => (
             <div key={columnIndex} className="grid grid-cols-1 gap-4">

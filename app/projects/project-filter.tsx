@@ -13,11 +13,13 @@ type Props = {
 	projects: Project[];
 	topics: { label: string; value: string }[];
 	tools: { label: string; value: string }[];
+	companies: string[];
 };
 
-export function ProjectFilter({ projects, topics, tools }: Props) {
+export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 	const [selectedTopic, setSelectedTopic] = useState("all");
 	const [selectedTool, setSelectedTool] = useState("all");
+	const [selectedCompany, setSelectedCompany] = useState("all");
 
 	const filteredProjects = useMemo(() => {
 		return projects.filter((project) => {
@@ -29,14 +31,33 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 				selectedTool === "all" ||
 				project.tools?.some((tool) => normalize(tool) === selectedTool);
 
-			return matchesTopic && matchesTool;
+			const matchesCompany =
+				selectedCompany === "all" ||
+				project.companyName?.trim() === selectedCompany;
+
+			return matchesTopic && matchesTool && matchesCompany;
 		});
-	}, [projects, selectedTopic, selectedTool]);
+	}, [projects, selectedTopic, selectedTool, selectedCompany]);
 
 	return (
 		<section className="md:space-y-2 md:pt-2">
 			<div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
 				<div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-10">
+					<div className="space-y-1">
+						<p className="text-sm font-semibold text-black">Filter by company</p>
+						<select
+							className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
+							value={selectedCompany}
+							onChange={(event) => setSelectedCompany(event.target.value)}
+						>
+							<option value="all">All companies</option>
+							{companies.map((company) => (
+								<option key={company} value={company}>
+									{company}
+								</option>
+							))}
+						</select>
+					</div>
 					<div className="space-y-1">
 						<p className="text-sm font-semibold text-black">Filter by tag</p>
 						<select
@@ -52,21 +73,7 @@ export function ProjectFilter({ projects, topics, tools }: Props) {
 							))}
 						</select>
 					</div>
-					{/* <div className="space-y-1">
-						<p className="text-sm font-semibold  text-black">Filter by tool</p>
-						<select
-							className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
-							value={selectedTool}
-							onChange={(event) => setSelectedTool(event.target.value)}
-						>
-							<option value="all">All tools & technologies</option>
-							{tools.map((tool) => (
-								<option key={tool.value} value={tool.value}>
-									{tool.label}
-								</option>
-							))}
-						</select>
-					</div> */}
+				
 				</div>
 				<p className="text-md sm:mt-10 text-black md:text-right">
 					Displaying {filteredProjects.length} project

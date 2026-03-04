@@ -23,10 +23,13 @@ export const Navigation: React.FC = () => {
 	return (
 		<header ref={ref}>
 			<div
-				className={`flex justify-end text-end px-4 ${
-					isIntersecting ? "bg-transparent  border-zinc-800  justify-end" : "bg-transparent border-zinc-800 justify-end"
-				} flex justify-end px-4 py-4`}
+				className={`flex w-full justify-between pl-8 pr-8 py-4 ${
+					isIntersecting ? "bg-transparent border-zinc-800" : "bg-transparent border-zinc-800"
+				}`}
 			>
+				<Link href="/" className="font-display text-xl text-black hover:text-black">
+					sarah kimi rettig
+				</Link>
 				<div className="flex items-center gap-8 justify-end px-4">
 					<div className="hidden md:flex gap-8">
 						<Link href="/projects" className="text-black hover:text-black">
