@@ -50,6 +50,8 @@ export default async function ProjectsPage() {
       slug: p.slug,
       heroImageSrc: p.heroImages![0].src,
       heroImageAlt: p.heroImages![0].alt ?? p.title,
+      topics: p.topics ?? [],
+      tools: p.tools ?? [],
     }));
 
   const sorted = allProjects
