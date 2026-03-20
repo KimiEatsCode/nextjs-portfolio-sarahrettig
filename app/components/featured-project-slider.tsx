@@ -60,15 +60,15 @@ export const FeaturedProjectSlider: React.FC<FeaturedProjectSliderProps> = ({ pr
 
 							{/* Project info overlay */}
 							<div className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-8">
-								<p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-1">
+								{/* <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-1">
 									Featured Project
-								</p>
+								</p> */}
 								<h3 className="text-xl md:text-3xl font-bold text-white mb-2 leading-tight">
 									{project.title}
 								</h3>
-								<p className="text-sm md:text-base text-white/80 mb-3 max-w-xl line-clamp-2">
+								{/* <p className="text-sm md:text-base text-white/80 mb-3 max-w-xl line-clamp-2">
 									{project.description}
-								</p>
+								</p> */}
 
 								{/* Tags */}
 								{((project.topics?.filter((t) => t.toLowerCase() !== "featured") ?? []).length > 0 ||
@@ -84,20 +84,20 @@ export const FeaturedProjectSlider: React.FC<FeaturedProjectSliderProps> = ({ pr
 													{topic}
 												</span>
 											))}
-										{project.tools?.map((tool) => (
+										{/* {project.tools?.map((tool) => (
 											<span
 												key={tool}
 												className="rounded-full bg-white/10 backdrop-blur-sm px-2.5 py-0.5 text-xs font-medium text-white/75 border border-white/15"
 											>
 												{tool}
 											</span>
-										))}
+										))} */}
 									</div>
 								)}
 
 								<Link
 									href={`/projects/${project.slug}`}
-									className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black shadow-lg hover:bg-zinc-100 transition-colors duration-200"
+									className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1 text-sm font-semibold text-black shadow-lg hover:bg-zinc-100 transition-colors duration-200"
 								>
 									View Project
 									<svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
