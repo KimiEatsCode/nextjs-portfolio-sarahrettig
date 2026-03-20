@@ -1,2 +1,2 @@
 export const RESUME_URL =
-  "https://drive.google.com/file/d/1pJaV_aIyASAXcnS1GC0nTriXTNOIHiaa/view?usp=drive_link";
+  "https://drive.google.com/file/d/1BsNSUz_tJKhWXoSlMr6psCYPC1lLAkCa/view?usp=sharing";
