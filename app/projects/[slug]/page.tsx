@@ -57,22 +57,7 @@ export default async function PostPage({ params }: Props) {
         <Mdx code={project.body.code} />
       </article>
       
-      {featuredImage?.src && (
-        <div className="mx-auto max-w-4xl px-6 mt-10">
-          <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-gray-100">
-            <Image
-              src={featuredImage.src}
-              alt={featuredImage.alt || project.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
-              priority
-            />
-          </div>
-        </div>
-      )}
-
-      
+  
       {relatedProjects.length > 0 && (
         <section className="px-6 py-4 pb-4 mt-12 border-t border-zinc-200">
           <div className="mx-auto">
