@@ -41,7 +41,7 @@ export const Navigation: React.FC = () => {
 			</div>
 
 			{/* Mobile: full-width menu toggle button directly under name */}
-			<div className="md:hidden w-full px-0">
+			<div className="md:hidden w-half px-0">
 				<a
 					href="#"
 					role="button"
