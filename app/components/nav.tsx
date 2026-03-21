@@ -24,8 +24,8 @@ export const Navigation: React.FC = () => {
 		<header ref={ref} className={`w-full ${isIntersecting ? "bg-transparent" : "bg-transparent"}`}>
 			{/* Name row (always) + desktop nav */}
 			<div className="flex w-full items-center justify-between px-4 md:px-4 py-4">
-				<Link href="/" className="font-display text-xl text-black hover:text-black">
-					sarah kimi rettig
+				<Link href="/" className="font-display text-2xl text-black hover:text-black">
+				    sarah kimi rettig
 				</Link>
 				<div className="hidden md:flex gap-8 items-center">
 					<Link href="/projects" className="text-black hover:text-black">
@@ -62,7 +62,7 @@ export const Navigation: React.FC = () => {
 						<>
 							<span className="w-full">Menu</span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-								<line x1="3" y1="6" x2="21" y2="6" />
+								<line x1="3" y1="3" x2="21" y2="6" />
 								<line x1="3" y1="12" x2="21" y2="12" />
 								<line x1="3" y1="18" x2="21" y2="18" />
 							</svg>
@@ -86,8 +86,7 @@ export const Navigation: React.FC = () => {
 					>
 						<span>Menu</span>
 						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-							<line x1="18" y1="6" x2="6" y2="18" />
-							<line x1="6" y1="6" x2="18" y2="18" />
+						<line y2="28" y1="12" x1="10" x2="25"></line><line y2="28" y1="12" x2="10" x1="25"></line>
 						</svg>
 					</button>
 					<Link
