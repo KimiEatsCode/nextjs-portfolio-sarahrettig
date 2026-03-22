@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { ProjectTopics } from "@/app/components/project-topics";
-import Image from "next/image";
 import { ImageSlider } from "../../components/image-slider";
 
 type HeroImage = {
@@ -95,7 +93,7 @@ links.push({
 						{(project.jobTitle || project.companyName) && (
 							<div className="mt-4 text-base text-zinc-600">
 								{project.jobTitle && <span className="font-semibold">{project.jobTitle}</span>}
-								{project.jobTitle && project.companyName && <span className="mx-2">
+								{project.jobTitle && project.companyName && <span>
 									
 								</span>}
 								<p>
