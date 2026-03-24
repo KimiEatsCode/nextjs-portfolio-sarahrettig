@@ -1,20 +1,9 @@
-<div align="center">
-   <h1 align="center">Sarah Rettig Portfolio</h1>
 
-My portfolio website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
+Sarah Rettig Portfolio
 
-</div>
+My portfolio website, built with React using [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/). Future plans include moving to Astro framework since Content Layer used in this project is an older, less supported project. Astro has it's own Content Layer feature.
 
-<br/>
-
-## Running Locally
-
-install dependencies and run the development server:
-```sh-session
-pnpm install
-pnpm dev
-```
-
+Resume url is stored in constants.ts file
 ## Cloning / Forking
 
 Please remove all of my personal information (projects, images, etc.) before deploying your own version of this site.
