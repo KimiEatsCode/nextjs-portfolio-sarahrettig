@@ -30,6 +30,9 @@ return (
             >
                 Contact Me
             </Link>
+           
+            </div>
+            <div className="flex flex-row justify-center gap-6">
             <Link
                 href="https://github.com/KimiEatsCode/nextjs-portfolio-sarahrettig"
                 className="duration-200 text-black hover:text-black"

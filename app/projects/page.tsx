@@ -107,7 +107,6 @@ export default async function ProjectsPage() {
         </div>
         <ProjectFilter projects={sorted} topics={topics} tools={tools} companies={companies} />
       </div>
-      <Footer />
     </div>
   );
 }
