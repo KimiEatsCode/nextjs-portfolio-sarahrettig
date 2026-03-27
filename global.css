@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+.prose ul li {
+  line-height: 1.4em;
+  padding-bottom: 10px!important;
+}
+
+/* This is a custom CSS class for grid layout of the projects to lower top margin */
+.grid.grid-cols-1.gap-4.md\:grid-cols-3.items-start.custom-grid-layout{
+  margin-top:10px!important;
+  
+}
+
   .text-edge-outline {
     -webkit-text-stroke: 2px rgba(255,255,255,1);
   }
@@ -34,10 +44,4 @@ header {
   background-color: #424242 !important;
 }
 
-/* This is a custom CSS class for grid layout of the projects to lower top margin */
-.grid.grid-cols-1.gap-4.md\:grid-cols-3.items-start.custom-grid-layout{
-  margin-top:10px!important;
-  
-}
-} 
 

@@ -4,9 +4,9 @@ import { Navigation } from "@/app/components/nav";
 import { Mdx } from "@/app/components/mdx";
 import { Header } from "./header";
 import "./mdx.css";
+import { Footer } from "@/app/components/footer";
 import { Card } from "@/app/components/card";
 import Link from "next/link";
-import Image from "next/image";
 import { ProjectTopics } from "@/app/components/project-topics";
 
 export const revalidate = 60;
@@ -96,6 +96,7 @@ export default async function PostPage({ params }: Props) {
           </div>
         </section>
       )}
+      <Footer />
     </div>
   );
 }

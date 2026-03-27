@@ -44,7 +44,7 @@ export default function Example() {
 								className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-8"
 							>
 							
-								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-white group-hover:text-black group-hover:bg-black border-black bg-black group-hover:border-black">
+								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-white group-hover:text-white group-hover:bg-black border-black bg-black group-hover:border-black">
 									{s.icon}
 								</span>{" "}
 								<div className="z-10 flex flex-col items-center">

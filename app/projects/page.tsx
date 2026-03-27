@@ -94,7 +94,7 @@ export default async function ProjectsPage() {
   ).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }));
 
   return (
-    <div className="relative pb-16">
+    <div className="relative pb-10">
       <Navigation />
       <div className="px-6 mx-auto space-y-8 lg:px-10 sm:mt-5 md:pt-5 lg:pt-5">
         {featuredSliderProjects.length > 0 && (
@@ -107,7 +107,7 @@ export default async function ProjectsPage() {
         </div>
         <ProjectFilter projects={sorted} topics={topics} tools={tools} companies={companies} />
       </div>
-      
+      <Footer />
     </div>
   );
 }

@@ -105,7 +105,7 @@ links.push({
 							{project.title}
 						</h1>
 						
-						<p className="mt-6 text-mdtext-center leading-8 text-black">
+						<p className="mt-6 text-mdtext-center leading-6 text-black md:px-12 lg:px-24">
 							{project.description}
 						</p>
 					
