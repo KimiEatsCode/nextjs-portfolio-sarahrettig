@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Project } from "@/.contentlayer/generated";
 import { Card } from "@/app/components/card";
 import { Article } from "@/app/projects/article";
@@ -20,6 +20,32 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 	const [selectedTopic, setSelectedTopic] = useState("all");
 	const [selectedTool, setSelectedTool] = useState("all");
 	const [selectedCompany, setSelectedCompany] = useState("all");
+	const resultsRef = useRef<HTMLDivElement>(null);
+
+	function scrollToResultsOnMobile() {
+		if (typeof window === "undefined") return;
+		if (!window.matchMedia("(max-width: 767px)").matches) return;
+
+		requestAnimationFrame(() => {
+			resultsRef.current?.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			});
+		});
+	}
+
+	function handleCompanyChange(value: string) {
+		setSelectedCompany(value);
+		if (value === "all") {
+			setSelectedTopic("all");
+		}
+		scrollToResultsOnMobile();
+	}
+
+	function handleTopicChange(value: string) {
+		setSelectedTopic(value);
+		scrollToResultsOnMobile();
+	}
 
 	const filteredProjects = useMemo(() => {
 		return projects.filter((project) => {
@@ -48,7 +74,7 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 						<select
 							className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
 							value={selectedCompany}
-							onChange={(event) => setSelectedCompany(event.target.value)}
+							onChange={(event) => handleCompanyChange(event.target.value)}
 						>
 							<option value="all">All companies</option>
 							{companies.map((company) => (
@@ -58,42 +84,46 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 							))}
 						</select>
 					</div>
-					<div className="space-y-1">
-						<p className="text-sm font-semibold text-black">Filter by tag</p>
-						<select
-							className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
-							value={selectedTopic}
-							onChange={(event) => setSelectedTopic(event.target.value)}
-						>
-							<option value="all">All topics</option>
-							{topics.map((topic) => (
-								<option key={topic.value} value={topic.value}>
-									{topic.label}
-								</option>
-							))}
-						</select>
-					</div>
+					{selectedCompany !== "all" ? (
+						<div className="space-y-1">
+							<p className="text-sm font-semibold text-black">Filter by tag</p>
+							<select
+								className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
+								value={selectedTopic}
+								onChange={(event) => handleTopicChange(event.target.value)}
+							>
+								<option value="all">All topics</option>
+								{topics.map((topic) => (
+									<option key={topic.value} value={topic.value}>
+										{topic.label}
+									</option>
+								))}
+							</select>
+						</div>
+					) : null}
 				
 				</div>
-				<p className="text-md sm:mt-10 text-black md:text-right">
+				<p className="text-md text-black md:text-right">
 					Displaying {filteredProjects.length} project
 					{filteredProjects.length === 1 ? "" : "s"}
 				</p>
 			</div>
 
-			{filteredProjects.length === 0 ? (
-				<p className="text-sm text-black">
-					No projects match those filters. Try adjusting your selections.
-				</p>
-			) : (
-				<div className="grid grid-cols-1 gap-4 md:grid-cols-3 mt-4">
-					{filteredProjects.map((project) => (
-								<Card key={project.slug}>
-									<Article project={project} />
-								</Card>
-					))}
-				</div>
-			)}
+			<div ref={resultsRef}>
+				{filteredProjects.length === 0 ? (
+					<p className="text-sm text-black">
+						No projects match those filters. Try adjusting your selections. Set company filter first then select a tag/topic filter.
+					</p>
+				) : (
+					<div className="grid grid-cols-1 gap-4 md:grid-cols-3 mt-4">
+						{filteredProjects.map((project) => (
+									<Card key={project.slug}>
+										<Article project={project} />
+									</Card>
+						))}
+					</div>
+				)}
+			</div>
 		</section>
 	);
 }
