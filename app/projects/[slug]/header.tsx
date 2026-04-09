@@ -101,7 +101,7 @@ links.push({
 								</p>
 							</div>
 						)}	
-						<h1 className="text-3xl mt-4 font-bold tracking-tight text-black sm:text-5xl font-display">
+						<h1 className="text-3xl mt-4 font-bold text-black sm:text-5xl font-display">
 							{project.title}
 						</h1>
 						

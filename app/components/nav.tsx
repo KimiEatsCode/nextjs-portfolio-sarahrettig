@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { RESUME_URL } from "../constants";
+import { CV_RESUME_URL, RESUME_URL } from "../constants";
 
 
 export const Navigation: React.FC = () => {
@@ -33,6 +33,9 @@ export const Navigation: React.FC = () => {
 					</Link>
 					<Link href={RESUME_URL} className="text-black hover:text-black">
 						Resume
+					</Link>
+					<Link href={CV_RESUME_URL} className="text-black hover:text-black">
+						CV
 					</Link>
 					<Link href="/contact" className="text-black hover:text-black">
 						Contact
