@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 import { Providers } from "./providers";
-import { Footer } from "./components/footer";
+import { FooterByRoute } from "./components/footer-by-route";
 export const metadata: Metadata = {
   title: {
     default: "Sarah Kimi Rettig",
@@ -68,7 +68,7 @@ export default function RootLayout({
         className={` ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
       >
         <Providers>{children}</Providers>
-        <Footer />
+        <FooterByRoute />
       </body>
     </html>
   );

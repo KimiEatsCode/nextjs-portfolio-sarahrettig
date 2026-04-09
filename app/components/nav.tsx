@@ -106,6 +106,9 @@ export const Navigation: React.FC = () => {
 					>
 						Resume
 					</Link>
+					<Link href={CV_RESUME_URL} className="text-black hover:text-black">
+						CV
+					</Link>
 					<Link
 						href="/contact"
 						onClick={() => setIsMenuOpen(false)}

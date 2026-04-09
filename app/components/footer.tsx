@@ -32,12 +32,12 @@ return (
             </Link>
            
             </div>
-            <div className="flex flex-row justify-center gap-6">
+            <div className="flex flex-row justify-center gap-6 p-2">
             <Link
                 href="https://github.com/KimiEatsCode/nextjs-portfolio-sarahrettig"
                 className="duration-200 text-black hover:text-black"
             >
-                Site designed and coded by Sarah Rettig | Github <i className="bi bi-github"></i>
+                Site coded by Sarah Rettig | Github <i className="bi bi-github"></i>
             </Link>
             </div>
             </div>

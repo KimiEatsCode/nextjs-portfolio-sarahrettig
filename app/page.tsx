@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { RESUME_URL } from "./constants";
-import { Footer } from "./components/footer";
 const navigation = [
   { name: "Projects", href: "/projects" },
   { name: "Resume", href: RESUME_URL },
@@ -37,7 +36,6 @@ export default function Home() {
          
         </h2>
       </div>
-      <Footer />
     </div>
   );
 
