@@ -106,7 +106,7 @@ export const Navigation: React.FC = () => {
 					>
 						Resume
 					</Link>
-					<Link href={CV_RESUME_URL} className="text-black hover:text-black">
+					<Link href={CV_RESUME_URL} className="block w-full px-4 py-4 text-left text-lg font-semibold uppercase tracking-wide hover:bg-zinc-50">
 						CV
 					</Link>
 					<Link

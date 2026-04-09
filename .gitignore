@@ -40,3 +40,4 @@ next-env.d.ts
 .env.example
 .env.example
 .cursorignore
+.cursor/plans/tag_option_counts_a5504372.plan.md

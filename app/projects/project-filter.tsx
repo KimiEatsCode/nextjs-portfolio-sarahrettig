@@ -47,6 +47,25 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 		scrollToResultsOnMobile();
 	}
 
+	const topicCountsByCompany = useMemo(() => {
+		const counts = new Map<string, number>();
+
+		for (const project of projects) {
+			const matchesCompany =
+				selectedCompany === "all" ||
+				project.companyName?.trim() === selectedCompany;
+
+			if (!matchesCompany) continue;
+
+			for (const topic of project.topics ?? []) {
+				const key = normalize(topic);
+				counts.set(key, (counts.get(key) ?? 0) + 1);
+			}
+		}
+
+		return counts;
+	}, [projects, selectedCompany]);
+
 	const filteredProjects = useMemo(() => {
 		return projects.filter((project) => {
 			const matchesTopic =
@@ -95,7 +114,7 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 								<option value="all">All topics</option>
 								{topics.map((topic) => (
 									<option key={topic.value} value={topic.value}>
-										{topic.label}
+										{topic.label} ({topicCountsByCompany.get(normalize(topic.value)) ?? 0})
 									</option>
 								))}
 							</select>
