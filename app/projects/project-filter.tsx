@@ -36,27 +36,20 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 
 	function handleCompanyChange(value: string) {
 		setSelectedCompany(value);
-		if (value === "all") {
-			setSelectedTopic("all");
-		}
+		setSelectedTopic("all");
 		scrollToResultsOnMobile();
 	}
 
 	function handleTopicChange(value: string) {
 		setSelectedTopic(value);
+		setSelectedCompany("all");
 		scrollToResultsOnMobile();
 	}
 
-	const topicCountsByCompany = useMemo(() => {
+	const topicCounts = useMemo(() => {
 		const counts = new Map<string, number>();
 
 		for (const project of projects) {
-			const matchesCompany =
-				selectedCompany === "all" ||
-				project.companyName?.trim() === selectedCompany;
-
-			if (!matchesCompany) continue;
-
 			for (const topic of project.topics ?? []) {
 				const key = normalize(topic);
 				counts.set(key, (counts.get(key) ?? 0) + 1);
@@ -64,7 +57,7 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 		}
 
 		return counts;
-	}, [projects, selectedCompany]);
+	}, [projects]);
 
 	const filteredProjects = useMemo(() => {
 		return projects.filter((project) => {
@@ -103,23 +96,21 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 							))}
 						</select>
 					</div>
-					{selectedCompany !== "all" ? (
-						<div className="space-y-1">
-							<p className="text-sm font-semibold text-black">Filter by tag</p>
-							<select
-								className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
-								value={selectedTopic}
-								onChange={(event) => handleTopicChange(event.target.value)}
-							>
-								<option value="all">All topics</option>
-								{topics.map((topic) => (
-									<option key={topic.value} value={topic.value}>
-										{topic.label} ({topicCountsByCompany.get(normalize(topic.value)) ?? 0})
-									</option>
-								))}
-							</select>
-						</div>
-					) : null}
+					<div className="space-y-1">
+						<p className="text-sm font-semibold text-black">Filter by tag</p>
+						<select
+							className="w-full rounded-lg border border-black bg-white px-3 py-2 text-sm text-black focus:border-black focus:outline-none"
+							value={selectedTopic}
+							onChange={(event) => handleTopicChange(event.target.value)}
+						>
+							<option value="all">All topics</option>
+							{topics.map((topic) => (
+								<option key={topic.value} value={topic.value}>
+									{topic.label} ({topicCounts.get(normalize(topic.value)) ?? 0})
+								</option>
+							))}
+						</select>
+					</div>
 				
 				</div>
 				<p className="text-md text-black md:text-right">
@@ -131,7 +122,7 @@ export function ProjectFilter({ projects, topics, tools, companies }: Props) {
 			<div ref={resultsRef}>
 				{filteredProjects.length === 0 ? (
 					<p className="text-sm text-black">
-						No projects match those filters. Try adjusting your selections. Set company filter first then select a tag/topic filter.
+						No projects match that filter. Try adjusting your selection.
 					</p>
 				) : (
 					<div className="grid grid-cols-1 gap-4 md:grid-cols-3 mt-4">
