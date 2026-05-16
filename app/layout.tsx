@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     title: "sarahrettig.com",
     description:
       "Web Developer and Designer",
-    url: "https://sarahrettig.com",
-    siteName: "sarahrettig.com",
+    url: "https://sarahkimirettig.com",
+    siteName: "sarahkimirettig.com",
     images: [
       {
         url: "https://sarahkimirettig.com/og.png",

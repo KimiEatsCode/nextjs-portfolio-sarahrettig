@@ -46,7 +46,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 			aria-label="Image gallery slider"
 		>
 			{/* Images Container with Controls */}
-			<div className="relative w-full overflow-hidden rounded-lg pb-6 shadow-2xl bg-zinc-100">
+			<div className="relative w-full overflow-hidden rounded-lg shadow-2xl bg-zinc-100">
 				<div className="relative w-full aspect-[16/9] min-h-[400px]">
 					{/* Next/Prev Controls */}
 					<div className="absolute inset-0 z-20 flex items-center justify-between px-4 pointer-events-none">
@@ -99,11 +99,6 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 								priority={index === 0}
 								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 							/>
-							{image.caption && (
-								<p className="pointer-events-none absolute left-4 right-4 bottom-4 rounded-2xl bg-black/70 px-4 py-2 text-sm text-white shadow-lg backdrop-blur">
-									{image.caption}
-								</p>
-							)}
 							<a
 								href={image.href ?? image.src}
 								className="absolute right-4 top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition-all duration-200 hover:bg-black hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
@@ -121,6 +116,12 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({ images, className = ""
 					))}
 				</div>
 			</div>
+
+			{images[currentIndex]?.caption && (
+				<p className="mt-3 text-center text-sm leading-relaxed text-zinc-600">
+					{images[currentIndex].caption}
+				</p>
+			)}
 
 			{/* Dot Navigation */}
 			{/* <div className="mt-8 mb-10 flex justify-center">

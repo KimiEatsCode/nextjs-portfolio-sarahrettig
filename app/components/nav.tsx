@@ -23,7 +23,7 @@ export const Navigation: React.FC = () => {
 	return (
 		<header ref={ref} className={`w-full ${isIntersecting ? "bg-transparent" : "bg-transparent"}`}>
 			{/* Name row (always) + desktop nav */}
-			<div className="flex w-full items-center justify-between px-6 md:px-6 py-2">
+			<div className="flex w-full items-center justify-between px-6 md:px-6 mt-4">
 				<Link href="/" className="font-display text-2xl text-black hover:text-black">
 				    sarah kimi rettig
 				</Link>
