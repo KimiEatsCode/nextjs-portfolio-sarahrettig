@@ -1,6 +1,6 @@
 export const RESUME_URL =
-  "https://drive.google.com/file/d/19-zS3lY2O8f87ek_IuQOOjCx-C-eOwgv/view?usp=sharing";
+  "https://drive.google.com/file/d/1QvL6uuA0-C_EGmehqYTZmhyCLGrosxTM/view?usp=sharing";
 
   export const CV_RESUME_URL =
-  "https://drive.google.com/file/d/1S1xruSZy5mfOZjrBKyM_SYZkG-A0sbDX/view?usp=drive_link";
+  "https://drive.google.com/file/d/1mHrjPevemoRDHBV5dYeLiRL1eWnidxdQ/view?usp=sharing";
 
