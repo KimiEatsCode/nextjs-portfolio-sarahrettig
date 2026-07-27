@@ -1,5 +1,5 @@
 export const RESUME_URL =
-  "https://drive.google.com/file/d/1-C_mTb8yU2flgpziysM-O9Zaqzi-gRb7/view?usp=sharing";
+  "https://docs.google.com/document/d/1YYyn3wMKLyeY3EIq3XT3Qm875kTcx50ZrZah3unNZqo/edit?usp=sharing";
 
   export const CV_RESUME_URL =
   "https://drive.google.com/file/d/1mHrjPevemoRDHBV5dYeLiRL1eWnidxdQ/view?usp=sharing";
