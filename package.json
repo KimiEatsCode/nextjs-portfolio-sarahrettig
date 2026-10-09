@@ -17,7 +17,7 @@
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.284.0",
     "markdown-wasm": "^1.2.0",
-    "next": "^13.5.4",
+    "next": "^16.4.0",
     "next-app": "^0.0.0",
     "next-contentlayer2": "^0.5.8",
     "react": "^18.2.0",
