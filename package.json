@@ -17,7 +17,7 @@
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.284.0",
     "markdown-wasm": "^1.2.0",
-    "next": "^13.5.4",
+    "next": "^15.5.24",
     "next-app": "^0.0.0",
     "next-contentlayer2": "^0.5.8",
     "react": "^18.2.0",
@@ -27,7 +27,7 @@
     "rehype-pretty-code": "^0.10.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "3.0.1",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.5",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
