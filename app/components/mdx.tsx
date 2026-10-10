@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 
 function clsx(...args: any) {
 	return args.filter(Boolean).join(" ");
